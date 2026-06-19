@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+.hero-orbit-layer {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 2;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.hero-ring-motion {
+	position: absolute;
+	inset: 0;
+	background-image: var(--hero-bg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	mix-blend-mode: normal;
+	filter: none;
+	opacity: 0.45;
+	transform-origin: 79% 43%;
+	will-change: transform;
+
+	/* Animate only a thin slice of the existing orbit ring while excluding globe pixels. */
+	-webkit-mask-image:
+		radial-gradient(circle 20.1% at 77.2% 43%, transparent 0 100%, rgba(0, 0, 0, 1) 101%),
+		radial-gradient(ellipse 38% 31% at 79.2% 43%, transparent 0 49%, rgba(0, 0, 0, 0.98) 50.5%, transparent 53%),
+		radial-gradient(ellipse 28% 21% at 88% 16%, rgba(0, 0, 0, 0.96) 10%, transparent 54%);
+	mask-image:
+		radial-gradient(circle 20.1% at 77.2% 43%, transparent 0 100%, rgba(0, 0, 0, 1) 101%),
+		radial-gradient(ellipse 38% 31% at 79.2% 43%, transparent 0 49%, rgba(0, 0, 0, 0.98) 50.5%, transparent 53%),
+		radial-gradient(ellipse 28% 21% at 88% 16%, rgba(0, 0, 0, 0.96) 10%, transparent 54%);
+	animation: ringDrift 8s linear infinite;
+}
+
+@keyframes ringDrift {
+	0% {
+		transform: rotate(0deg) translate3d(0, 0, 0);
+	}
+
+	50% {
+		transform: rotate(2deg) translate3d(0, 0, 0);
+	}
+
+	100% {
+		transform: rotate(0deg) translate3d(0, 0, 0);
+	}
+}
+
+@media (max-width: 1024px) {
+	.hero-orbit-layer {
+		opacity: 0.9;
+	}
+
+	.hero-ring-motion {
+		transform-origin: 77% 43%;
+		opacity: 0.34;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-ring-motion {
+		animation: none;
+	}
+}

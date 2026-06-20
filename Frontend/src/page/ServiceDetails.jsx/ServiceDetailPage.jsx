@@ -1,5 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom';
-import { getServiceBySlug } from './data/index';
+import { getServiceBySlug } from '../../data/Index';
 import ServiceDetailLayout from './ServiceDetailLayout';
 
 export default function ServiceDetailPage() {

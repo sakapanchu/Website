@@ -7,6 +7,7 @@ import Projects from "./page/Projects";
 import ProjectDetail from "./page/ProjectDetail";
 import Services from "./page/Services";
 import ServiceDetailPage from "./page/ServiceDetails.jsx/ServiceDetailPage";
+import LetTalk from "./page/LetTalk";
 // import Careers from "./pages/Careers";
 // import Products from "./pages/Products";
 // import About from "./pages/About";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/projects/:id" element={<ProjectDetail />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
+        <Route path="/let-talk" element={<LetTalk />} />
         {/* Add other routes as you create them */}
         {/* <Route path="/careers" element={<Careers />} /> */}
         {/* <Route path="/products" element={<Products />} /> */}

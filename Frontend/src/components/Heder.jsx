@@ -152,7 +152,7 @@ export default function Header() {
 
           {/* Let's Talk Button */}
           <Link
-            to="/contact"
+            to="/let-talk"
             className="
               group
               flex items-center gap-2

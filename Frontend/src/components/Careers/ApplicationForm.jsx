@@ -62,7 +62,7 @@ export default function ApplicationForm() {
         <div className="relative w-full overflow-hidden rounded-[20px_20px_60px_60px] md:rounded-[20px_20px_90px_90px] bg-[#0E0F11] text-white min-h-[420px] flex items-center">
           {/* Glowing accents */}
           <div className="absolute top-0 right-0 w-[50%] h-full bg-[radial-gradient(circle_at_right,rgba(245,185,12,0.15),transparent_70%)] pointer-events-none" />
-          
+
           <div className="relative z-10 w-full flex flex-col lg:flex-row items-center justify-between px-8 sm:px-12 lg:px-16 py-12 gap-8">
             <div className="flex-1 max-w-xl">
               {/* Tag */}
@@ -135,283 +135,314 @@ export default function ApplicationForm() {
             </div>
           </div>
 
-          <AnimatePresence mode="wait">
-            {submitSuccess ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex flex-col items-center justify-center py-16 text-center"
-              >
-                <div className="w-20 h-20 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-6">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <h3 className="text-3xl font-extrabold text-black mb-3">Application Submitted!</h3>
-                <p className="text-gray-500 max-w-md">Your application for the {matchedJob.title} role has been successfully submitted. We will review it and get back to you soon.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Two Column Fields */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* Left Column: Personal Info */}
-                  <div className="space-y-5">
-                    <h3 className="text-lg font-bold text-black flex items-center gap-2 mb-2">
-                      <span className="text-[#FFC80B]">👤</span> Personal Information
-                    </h3>
 
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Full Name</label>
-                      <input
-                        required
-                        type="text"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="Enter your full name"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      />
-                    </div>
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Two Column Fields */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left Column: Personal Info */}
+              <div className="space-y-5">
+                <h3 className="text-lg font-bold text-black flex items-center gap-2 mb-2">
+                  <span className="text-[#FFC80B]">👤</span> Personal Information
+                </h3>
 
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Email Address</label>
-                      <input
-                        required
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="Enter your email address"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Phone Number</label>
-                      <input
-                        required
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="Enter your phone number"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Right Column: Professional Info */}
-                  <div className="space-y-5">
-                    <h3 className="text-lg font-bold text-black flex items-center gap-2 mb-2">
-                      <span className="text-[#FFC80B]">💼</span> Professional Information
-                    </h3>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Years of Experience</label>
-                      <select
-                        required
-                        value={formData.experience}
-                        onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      >
-                        <option value="">Select experience</option>
-                        <option value="Entry level (0-2 years)">Entry level (0-2 years)</option>
-                        <option value="Mid level (3-5 years)">Mid level (3-5 years)</option>
-                        <option value="Senior level (5+ years)">Senior level (5+ years)</option>
-                      </select>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Current Role</label>
-                      <input
-                        required
-                        type="text"
-                        value={formData.currentRole}
-                        onChange={(e) => setFormData({ ...formData, currentRole: e.target.value })}
-                        placeholder="Enter your current role"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Expected Salary</label>
-                      <input
-                        required
-                        type="text"
-                        value={formData.expectedSalary}
-                        onChange={(e) => setFormData({ ...formData, expectedSalary: e.target.value })}
-                        placeholder="Enter expected salary"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      />
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-gray-700">Portfolio URL</label>
-                      <input
-                        type="url"
-                        value={formData.portfolioUrl}
-                        onChange={(e) => setFormData({ ...formData, portfolioUrl: e.target.value })}
-                        placeholder="https://"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                      />
-                    </div>
-                  </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Full Name</label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    placeholder="Enter your full name"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                  />
                 </div>
 
-                {/* Documents Upload Section */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-black flex items-center gap-2">
-                    <span className="text-[#FFC80B]">📁</span> Documents
-                  </h3>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Resume Upload */}
-                    <div
-                      onClick={() => resumeInputRef.current?.click()}
-                      className="border border-dashed border-[#FFC80B] bg-white hover:bg-[#FFC80B]/5 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 group"
-                    >
-                      <div className="w-12 h-12 rounded-full bg-[#FFC80B]/10 text-[#7B5901] flex items-center justify-center mb-4 group-hover:bg-[#FFC80B] group-hover:text-black transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="17 8 12 3 7 8" />
-                          <line x1="12" y1="3" x2="12" y2="15" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-black mb-1">Upload Resume/CV</h4>
-                      <p className="text-xs text-gray-400 mb-4">PDF, DOC, DOCX (Max 5MB)</p>
-                      <button
-                        type="button"
-                        className="px-4 py-1.5 rounded-full bg-[#FFC80B] text-black text-xs font-bold"
-                      >
-                        Choose File
-                      </button>
-                      <input
-                        type="file"
-                        ref={resumeInputRef}
-                        accept=".pdf,.docx,.doc"
-                        className="hidden"
-                        onChange={(e) => setResume(e.target.files?.[0] || null)}
-                      />
-                      {resume && (
-                        <div className="mt-3 text-xs text-[#7B5901] font-bold bg-[#FFC80B]/10 px-3 py-1 rounded-full">
-                          {resume.name}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Cover Letter Upload */}
-                    <div
-                      onClick={() => coverLetterInputRef.current?.click()}
-                      className="border border-dashed border-gray-200 bg-white hover:bg-gray-50 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 group"
-                    >
-                      <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors duration-300">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="17 8 12 3 7 8" />
-                          <line x1="12" y1="3" x2="12" y2="15" />
-                        </svg>
-                      </div>
-                      <h4 className="font-bold text-black mb-1">Cover Letter (Optional)</h4>
-                      <p className="text-xs text-gray-400 mb-4">PDF, DOC, DOCX (Max 5MB)</p>
-                      <button
-                        type="button"
-                        className="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 text-xs font-bold border border-gray-200 hover:bg-gray-200"
-                      >
-                        Choose File
-                      </button>
-                      <input
-                        type="file"
-                        ref={coverLetterInputRef}
-                        accept=".pdf,.docx,.doc"
-                        className="hidden"
-                        onChange={(e) => setCoverLetter(e.target.files?.[0] || null)}
-                      />
-                      {coverLetter && (
-                        <div className="mt-3 text-xs text-gray-600 font-bold bg-gray-100 px-3 py-1 rounded-full">
-                          {coverLetter.name}
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Email Address</label>
+                  <input
+                    required
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="Enter your email address"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                  />
                 </div>
 
-                {/* Additional Questions */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-black flex items-center gap-2">
-                    <span className="text-[#FFC80B]">🎨</span> Additional Questions
-                  </h3>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-gray-700">Why do you want to join our team?</label>
-                    <textarea
-                      rows={4}
-                      value={formData.whyJoin}
-                      onChange={(e) => setFormData({ ...formData, whyJoin: e.target.value })}
-                      placeholder="Tell us why you'd be a great fit..."
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-gray-700">Describe your most significant project</label>
-                    <textarea
-                      rows={4}
-                      value={formData.significantProject}
-                      onChange={(e) => setFormData({ ...formData, significantProject: e.target.value })}
-                      placeholder="Tell us about your achievements..."
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
-                    />
-                  </div>
-
-                  <label className="flex items-center gap-3 cursor-pointer py-2">
-                    <input
-                      type="checkbox"
-                      checked={formData.authorized}
-                      onChange={(e) => setFormData({ ...formData, authorized: e.target.checked })}
-                      className="w-5 h-5 accent-[#FFC80B] rounded border-gray-300 focus:ring-0"
-                    />
-                    <span className="text-sm text-gray-600 font-semibold select-none">I am authorized to work in this country</span>
-                  </label>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Phone Number</label>
+                  <input
+                    required
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="Enter your phone number"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                  />
                 </div>
+              </div>
 
-                {/* Form Actions */}
-                <div className="flex flex-col items-center gap-4 pt-4 border-t border-gray-100">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 rounded-full bg-[#FFC80B] text-black font-bold text-base transition-all duration-300 hover:scale-103 hover:bg-[#F5B90C] hover:shadow-[0_8px_25px_rgba(255,200,11,0.25)] flex items-center justify-center gap-2"
+              {/* Right Column: Professional Info */}
+              <div className="space-y-5">
+                <h3 className="text-lg font-bold text-black flex items-center gap-2 mb-2">
+                  <span className="text-[#FFC80B]">💼</span> Professional Information
+                </h3>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Years of Experience</label>
+                  <select
+                    required
+                    value={formData.experience}
+                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
                   >
-                    {isSubmitting ? (
-                      <span className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transform -rotate-45">
-                          <line x1="22" y1="2" x2="11" y2="13" />
-                          <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                        </svg>
-                        Submit Application
-                      </>
-                    )}
-                  </button>
+                    <option value="">Select experience</option>
+                    <option value="Entry level (0-2 years)">Entry level (0-2 years)</option>
+                    <option value="Mid level (3-5 years)">Mid level (3-5 years)</option>
+                    <option value="Senior level (5+ years)">Senior level (5+ years)</option>
+                  </select>
+                </div>
 
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Current Role</label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.currentRole}
+                    onChange={(e) => setFormData({ ...formData, currentRole: e.target.value })}
+                    placeholder="Enter your current role"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Expected Salary</label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.expectedSalary}
+                    onChange={(e) => setFormData({ ...formData, expectedSalary: e.target.value })}
+                    placeholder="Enter expected salary"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Portfolio URL</label>
+                  <input
+                    type="url"
+                    value={formData.portfolioUrl}
+                    onChange={(e) => setFormData({ ...formData, portfolioUrl: e.target.value })}
+                    placeholder="https://"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Documents Upload Section */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-black flex items-center gap-2">
+                <span className="text-[#FFC80B]">📁</span> Documents
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Resume Upload */}
+                <div
+                  onClick={() => resumeInputRef.current?.click()}
+                  className="border border-dashed border-[#FFC80B] bg-white hover:bg-[#FFC80B]/5 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#FFC80B]/10 text-[#7B5901] flex items-center justify-center mb-4 group-hover:bg-[#FFC80B] group-hover:text-black transition-colors duration-300">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-black mb-1">Upload Resume/CV</h4>
+                  <p className="text-xs text-gray-400 mb-4">PDF, DOC, DOCX (Max 5MB)</p>
                   <button
                     type="button"
-                    onClick={() => {
-                      alert("Application saved for later!");
-                      navigate('/careers');
-                    }}
-                    className="text-gray-500 hover:text-black font-bold text-sm transition-colors"
+                    className="px-4 py-1.5 rounded-full bg-[#FFC80B] text-black text-xs font-bold"
                   >
-                    Save for Later
+                    Choose File
                   </button>
-
-                  <p className="text-[11px] text-gray-400 text-center max-w-[400px]">
-                    By submitting this application, you agree to our <a href="#" className="underline hover:text-gray-600">Privacy Policy</a> and <a href="#" className="underline hover:text-gray-600">Terms of Service</a>
-                  </p>
+                  <input
+                    type="file"
+                    ref={resumeInputRef}
+                    accept=".pdf,.docx,.doc"
+                    className="hidden"
+                    onChange={(e) => setResume(e.target.files?.[0] || null)}
+                  />
+                  {resume && (
+                    <div className="mt-3 text-xs text-[#7B5901] font-bold bg-[#FFC80B]/10 px-3 py-1 rounded-full">
+                      {resume.name}
+                    </div>
+                  )}
                 </div>
-              </form>
-            )}
-          </AnimatePresence>
+
+                {/* Cover Letter Upload */}
+                <div
+                  onClick={() => coverLetterInputRef.current?.click()}
+                  className="border border-dashed border-gray-200 bg-white hover:bg-gray-50 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors duration-300">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-black mb-1">Cover Letter (Optional)</h4>
+                  <p className="text-xs text-gray-400 mb-4">PDF, DOC, DOCX (Max 5MB)</p>
+                  <button
+                    type="button"
+                    className="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 text-xs font-bold border border-gray-200 hover:bg-gray-200"
+                  >
+                    Choose File
+                  </button>
+                  <input
+                    type="file"
+                    ref={coverLetterInputRef}
+                    accept=".pdf,.docx,.doc"
+                    className="hidden"
+                    onChange={(e) => setCoverLetter(e.target.files?.[0] || null)}
+                  />
+                  {coverLetter && (
+                    <div className="mt-3 text-xs text-gray-600 font-bold bg-gray-100 px-3 py-1 rounded-full">
+                      {coverLetter.name}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Questions */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-black flex items-center gap-2">
+                <span className="text-[#FFC80B]">🎨</span> Additional Questions
+              </h3>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-gray-700">Why do you want to join our team?</label>
+                <textarea
+                  rows={4}
+                  value={formData.whyJoin}
+                  onChange={(e) => setFormData({ ...formData, whyJoin: e.target.value })}
+                  placeholder="Tell us why you'd be a great fit..."
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-gray-700">Describe your most significant project</label>
+                <textarea
+                  rows={4}
+                  value={formData.significantProject}
+                  onChange={(e) => setFormData({ ...formData, significantProject: e.target.value })}
+                  placeholder="Tell us about your achievements..."
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#FFC80B] text-black bg-white"
+                />
+              </div>
+
+              <label className="flex items-center gap-3 cursor-pointer py-2">
+                <input
+                  type="checkbox"
+                  checked={formData.authorized}
+                  onChange={(e) => setFormData({ ...formData, authorized: e.target.checked })}
+                  className="w-5 h-5 accent-[#FFC80B] rounded border-gray-300 focus:ring-0"
+                />
+                <span className="text-sm text-gray-600 font-semibold select-none">I am authorized to work in this country</span>
+              </label>
+            </div>
+
+            {/* Form Actions */}
+            <div className="flex flex-col items-center gap-4 pt-4 border-t border-gray-100">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-full bg-[#FFC80B] text-black font-bold text-base transition-all duration-300 hover:scale-103 hover:bg-[#F5B90C] hover:shadow-[0_8px_25px_rgba(255,200,11,0.25)] flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                  <span className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transform -rotate-45">
+                      <line x1="22" y1="2" x2="11" y2="13" />
+                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                    Submit Application
+                  </>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  alert("Application saved for later!");
+                  navigate('/careers');
+                }}
+                className="text-gray-500 hover:text-black font-bold text-sm transition-colors"
+              >
+                Save for Later
+              </button>
+
+              <p className="text-[11px] text-gray-400 text-center max-w-[400px]">
+                By submitting this application, you agree to our <a href="#" className="underline hover:text-gray-600">Privacy Policy</a> and <a href="#" className="underline hover:text-gray-600">Terms of Service</a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
+
+      {/* Success Modal Overlay */}
+      <AnimatePresence>
+        {submitSuccess && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+
+            {/* Modal Body */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-2xl z-10 flex flex-col items-center text-center"
+            >
+              {/* Yellow circle checkmark icon */}
+              <div className="w-16 h-16 rounded-full bg-[#FFC80B] text-black flex items-center justify-center mb-6 shadow-[0_4px_20px_rgba(255,200,11,0.3)]">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-extrabold text-black mb-3">Request Submitted!</h3>
+
+              {/* Description */}
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-xs">
+                Thank you for your interest. We'll get back to you within 24 hours.
+              </p>
+
+              {/* Close Button */}
+              <button
+                onClick={() => {
+                  setSubmitSuccess(false);
+                  navigate('/careers');
+                }}
+                className="w-full py-4 rounded-full bg-[#FFC80B] text-black font-bold text-base transition-all duration-300 hover:bg-[#F5B90C] hover:shadow-[0_8px_20px_rgba(255,200,11,0.25)] active:scale-95"
+              >
+                Close
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

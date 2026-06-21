@@ -8,7 +8,8 @@ import ProjectDetail from "./page/ProjectDetail";
 import Services from "./page/Services";
 import ServiceDetailPage from "./page/ServiceDetails.jsx/ServiceDetailPage";
 import LetTalk from "./page/LetTalk";
-// import Careers from "./pages/Careers";
+import Careers from "./page/Careers";
+import CareersApply from "./page/CareersApply";
 // import Products from "./pages/Products";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -34,8 +35,9 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
         <Route path="/let-talk" element={<LetTalk />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/careers/apply/:id" element={<CareersApply />} />
         {/* Add other routes as you create them */}
-        {/* <Route path="/careers" element={<Careers />} /> */}
         {/* <Route path="/products" element={<Products />} /> */}
         {/* <Route path="/about" element={<About />} /> */}
         {/* <Route path="/contact" element={<Contact />} /> */}

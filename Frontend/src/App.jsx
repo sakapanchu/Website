@@ -1,15 +1,19 @@
 // App.jsx - Usage
 import React from "react";
 import { useEffect } from "react";
-import Home from "./page/Home";
+import Home from "./page/Home/Home";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Projects from "./page/Projects";
+import Projects from "./page/Projects/Projects";
 import ProjectDetail from "./page/ProjectDetail";
-import Services from "./page/Services";
-import ServiceDetailPage from "./page/ServiceDetails.jsx/ServiceDetailPage";
-import LetTalk from "./page/LetTalk";
-import Careers from "./page/Careers";
-import CareersApply from "./page/CareersApply";
+import Services from "./page/Services/Services";
+import ServiceDetailPage from "./page/Services/ServiceDetails.jsx/ServiceDetailPage";
+import LetTalk from "./page/LetsTalk/LetTalk";
+import Careers from "./page/Career/Careers";
+import CareersApply from "./page/Career/CareersApply";
+import AboutUs from "./page/About/AboutUs";
+import Contact from "./page/Contact/Contact";
+
+
 // import Products from "./pages/Products";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -37,10 +41,11 @@ function App() {
         <Route path="/let-talk" element={<LetTalk />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/careers/apply/:id" element={<CareersApply />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
+      
         {/* Add other routes as you create them */}
         {/* <Route path="/products" element={<Products />} /> */}
-        {/* <Route path="/about" element={<About />} /> */}
-        {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
     </>
   );

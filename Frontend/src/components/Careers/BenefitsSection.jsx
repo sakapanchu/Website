@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
+// Import icons from assets
+import SalaryIcon from '../../assets/salary.png';
+import LearningIcon from '../../assets/budget.png';
+import FlexibleIcon from '../../assets/hour.png';
+import TeamIcon from '../../assets/teamEvent.png';
+
 export default function BenefitsSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
@@ -17,42 +23,27 @@ export default function BenefitsSection() {
   const benefits = [
     {
       title: "Competitive Salary",
-      description: "Fair compensation matched with performance bonuses and reviews.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <line x1="12" y1="1" x2="12" y2="23" />
-          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-        </svg>
-      )
+      description: "Fair compensation that reflects your skills and experience.",
+      icon: SalaryIcon,
+      alt: "Competitive Salary Icon"
     },
     {
       title: "Learning Budget",
-      description: "Annual stipend for courses, books, certifications, and conferences.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-        </svg>
-      )
+      description: "Access dedicated resources for certifications, training programs, conferences, and continuous learning opportunities.",
+      icon: LearningIcon,
+      alt: "Learning Budget Icon"
     },
     {
       title: "Flexible Hours",
-      description: "Core hours approach designed to promote healthy work-life balance.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
-      )
+      description: "Work in a flexible environment designed to support productivity, creativity, and work-life balance.",
+      icon: FlexibleIcon,
+      alt: "Flexible Hours Icon"
     },
     {
       title: "Team Events",
-      description: "Regular gatherings, hackathons, outings, and team-building retreats.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      )
+      description: "Enjoy engaging team-building activities, networking events, and collaborative experiences that strengthen company culture.",
+      icon: TeamIcon,
+      alt: "Team Events Icon"
     }
   ];
 
@@ -81,65 +72,77 @@ export default function BenefitsSection() {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 px-8 bg-white overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
-        {/* Header */}
-        <motion.div
-          variants={headerVariants}
-          initial="hidden"
-          animate={controls}
-          className="text-center mb-16"
-        >
-          {/* Subtitle Accent */}
-          <div className="flex items-center justify-center gap-4 mb-3">
-            <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
-            <span className="text-[16px] font-bold tracking-[2px] uppercase text-black">
-              BENEFITS
-            </span>
-            <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
-          </div>
+        {/* White Container */}
+        <div className="bg-white rounded-[30px] py-12 px-6 md:px-10">
+          {/* Header */}
+          <motion.div
+            variants={headerVariants}
+            initial="hidden"
+            animate={controls}
+            className="text-center mb-12"
+          >
+            {/* Subtitle */}
+            <div className="flex items-center justify-center gap-4 mb-2">
+              <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
+              <span className="text-[12px] font-bold tracking-[1.2px] uppercase text-[#FFC80B]">
+                BENEFITS
+              </span>
+              <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
+            </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[40px] font-bold leading-tight text-black mb-4">
-            Supporting Your Career Beyond the Workplace
-          </h2>
-          <p className="text-gray-600 max-w-[700px] mx-auto text-base sm:text-lg">
-            We care about your growth, well-being, and progress.
-          </p>
-        </motion.div>
+            {/* Title */}
+            <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold leading-[36px] md:leading-[40px] text-black mb-3">
+              Supporting Your Career Beyond the Workplace
+            </h2>
 
-        {/* Benefits Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ 
-                scale: 1.03, 
-                borderColor: '#FFC80B', 
-                boxShadow: '0 20px 40px rgba(255, 200, 11, 0.1)' 
-              }}
-              className="bg-white rounded-2xl p-8 border border-gray-200 transition-all duration-300 flex flex-col items-center text-center relative group"
-            >
-              {/* Icon Circle */}
-              <div className="w-14 h-14 rounded-full bg-[#FFC80B]/10 text-[#7B5901] flex items-center justify-center mb-6 group-hover:bg-[#FFC80B] group-hover:text-black transition-colors duration-300">
-                {benefit.icon}
-              </div>
+            {/* Description */}
+            <p className="text-[14px] sm:text-[16px] font-normal text-[#9CA3AF] max-w-[319px] mx-auto leading-5 sm:leading-6">
+              We care about your wellbeing and growth.
+            </p>
+          </motion.div>
 
-              {/* Title & Description */}
-              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#FFC80B] transition-colors duration-300">
-                {benefit.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                {benefit.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+          {/* Benefits Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={controls}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -5,
+                  borderColor: '#FBBF24',
+                  boxShadow: '0 20px 40px rgba(255, 200, 11, 0.08)' 
+                }}
+                className="bg-[rgba(251,191,36,0.05)] rounded-2xl p-6 border border-[#FBBF24] transition-all duration-300 flex flex-col items-center text-center"
+              >
+                {/* Icon Container */}
+                <div className="w-16 h-16 rounded-2xl bg-[#FFC80B] flex items-center justify-center flex-shrink-0 mb-4">
+                  <img 
+                    src={benefit.icon} 
+                    alt={benefit.alt}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-[20px] font-bold text-black leading-[28px] mb-2">
+                  {benefit.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-[14px] font-normal text-[#9CA3AF] leading-[20px] max-w-[255px]">
+                  {benefit.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

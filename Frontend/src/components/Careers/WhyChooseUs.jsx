@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
+// Import icons from assets
+import GrowthIcon from '../../assets/grow.png';
+import LearningIcon from '../../assets/learn.png';
+import FlexibleIcon from '../../assets/flexible.png';
+import TeamIcon from '../../assets/team.png';
+
 export default function WhyChooseUs() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
@@ -17,46 +23,27 @@ export default function WhyChooseUs() {
   const cards = [
     {
       title: "Growth Opportunities",
-      description: "Unlock your full potential with clear career pathways, training budgets, and mentorship from industry leaders.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="18" y1="20" x2="18" y2="10" />
-          <line x1="12" y1="20" x2="12" y2="4" />
-          <line x1="6" y1="20" x2="6" y2="14" />
-        </svg>
-      )
+      description: "Accelerate your professional journey through leadership mentorship, real-world projects, and continuous career advancement opportunities.",
+      icon: GrowthIcon,
+      alt: "Growth Opportunities Icon"
     },
     {
       title: "Learning Culture",
-      description: "Stay ahead with developer-first learning resources, peer sessions, workshops, and conference opportunities.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-        </svg>
-      )
+      description: "Expand your expertise with access to certifications, industry workshops, technology conferences, and continuous skill development programs.",
+      icon: LearningIcon,
+      alt: "Learning Culture Icon"
     },
     {
       title: "Flexible Work",
-      description: "Enjoy a balanced life with remote-first options, flexible working hours, and wellness benefits.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
-      )
+      description: "Enjoy a modern work culture that values flexibility, productivity, and a healthy balance between professional and personal growth.",
+      icon: FlexibleIcon,
+      alt: "Flexible Work Icon"
     },
     {
       title: "Friendly Team",
-      description: "Collaborate with talented, warm, and supportive peers in a diverse and inclusive environment.",
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-      )
+      description: "Collaborate with passionate professionals in an inclusive and supportive environment built on teamwork, innovation, and shared success.",
+      icon: TeamIcon,
+      alt: "Friendly Team Icon"
     }
   ];
 
@@ -84,69 +71,77 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
-        {/* Header */}
-        <motion.div
-          variants={headerVariants}
-          initial="hidden"
-          animate={controls}
-          className="text-center mb-16"
-        >
-          {/* Subtitle Accent */}
-          <div className="flex items-center justify-center gap-4 mb-3">
-            <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
-            <span className="text-[16px] font-bold tracking-[2px] uppercase text-black">
-              WHY US
-            </span>
-            <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
-          </div>
+        {/* White Background Container */}
+        <div className="bg-white rounded-[30px] py-10 px-8">
+          {/* Header */}
+          <motion.div
+            variants={headerVariants}
+            initial="hidden"
+            animate={controls}
+            className="text-center mb-12"
+          >
+            {/* Subtitle */}
+            <div className="flex items-center justify-center gap-4 mb-2">
+              <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
+              <span className="text-[12px] font-bold tracking-[1.2px] uppercase text-[#FFC80B]">
+                WHY US
+              </span>
+              <div className="w-[35px] h-[3px] bg-[#FFC80B]"></div>
+            </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[40px] font-bold leading-tight text-black mb-4">
-            Why Exceptional Talent Chooses Us
-          </h2>
-          <p className="text-gray-600 max-w-[700px] mx-auto text-base sm:text-lg">
-            Our dynamic culture of innovation, collaboration, and continuous growth makes Faite the best place to accelerate your career and make a global impact.
-          </p>
-        </motion.div>
+            {/* Title */}
+            <h2 className="text-[36px] font-bold leading-[40px] text-black mb-4">
+              Why Exceptional Talent Chooses Us
+            </h2>
 
-        {/* Cards Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -10, 
-                borderColor: '#FFC80B', 
-                boxShadow: '0 20px 40px rgba(255, 200, 11, 0.12)' 
-              }}
-              className="bg-white rounded-2xl p-8 border border-gray-200 transition-all duration-300 flex flex-col items-center text-center relative group"
-            >
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-transparent group-hover:border-[#FFC80B] rounded-tl-2xl transition-all duration-300" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-transparent group-hover:border-[#FFC80B] rounded-br-2xl transition-all duration-300" />
+            {/* Description */}
+            <p className="text-[16px] font-normal text-[#9CA3AF] max-w-[582px] mx-auto leading-6">
+              We foster a culture of innovation, collaboration, and continuous growth where talented individuals are empowered to make meaningful contributions.
+            </p>
+          </motion.div>
 
-              {/* Icon Container */}
-              <div className="w-14 h-14 rounded-2xl bg-[#FFC80B]/10 text-[#7B5901] flex items-center justify-center mb-6 group-hover:bg-[#FFC80B] group-hover:text-black transition-colors duration-300">
-                {card.icon}
-              </div>
+          {/* Cards Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={controls}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {cards.map((card, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -8, 
+                  borderColor: '#FFCD29', 
+                  boxShadow: '0 20px 40px rgba(255, 200, 11, 0.12)' 
+                }}
+                className="bg-white rounded-2xl p-8 border border-[#FFCD29] transition-all duration-300 flex flex-col items-center text-center h-[285px]"
+              >
+                {/* Icon Container */}
+                <div className="w-16 h-16 rounded-2xl bg-[#FFC80B] flex items-center justify-center flex-shrink-0 mb-4">
+                  <img 
+                    src={card.icon} 
+                    alt={card.alt}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
 
-              {/* Content */}
-              <h3 className="text-xl font-bold text-black mb-3">
-                {card.title}
-              </h3>
-              <p className="text-gray-500 text-[15px] leading-relaxed">
-                {card.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Title */}
+                <h3 className="text-[20px] font-bold text-black leading-[28px] mb-2">
+                  {card.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-[14px] font-normal text-[#9CA3AF] leading-[23px] max-w-[302px]">
+                  {card.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

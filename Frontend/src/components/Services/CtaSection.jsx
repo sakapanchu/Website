@@ -98,7 +98,7 @@ export default function CtaSection() {
               {/* Text */}
               <div>
                 <h2 className="text-[36px] md:text-[42px] lg:text-[48px] font-bold text-white leading-[44px] md:leading-[48px]">
-                  Let's build something<br />amazing together
+                  Let's build something<br />amazing <span className="text-[#FBBF24]">together</span>     
                 </h2>
                 <p className="text-[16px] font-normal text-[#9CA3AF] leading-6 mt-2 max-w-[481px]">
                   Ready to transform your ideas into reality? Get in touch with our team today.

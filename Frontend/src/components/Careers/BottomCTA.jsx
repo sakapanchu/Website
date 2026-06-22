@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import CtaBg from '../../assets/bottomCTA.png';
 
 export default function BottomCTA() {
   const sectionRef = useRef(null);
@@ -24,46 +25,52 @@ export default function BottomCTA() {
   };
 
   return (
-    <section ref={sectionRef} className="py-12 px-4 sm:px-6 lg:px-8 bg-[#F1F1F1]">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={controls}
-        className="max-w-[1430px] mx-auto rounded-[30px] bg-gradient-to-r from-[#0E0F11] via-[#1A1C1E] to-[#0E0F11] text-white p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-[#FFC80B]/10 shadow-2xl text-center"
-      >
-        {/* Subtle grid pattern background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-[120px] bg-[#FFC80B]/10 rounded-full blur-[60px] pointer-events-none" />
+    <section ref={sectionRef} className="bg-[#F1F1F1] overflow-hidden px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+      <div className="max-w-[1430px] mx-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+          className="relative flex items-center overflow-hidden rounded-[24px] sm:rounded-[30px] lg:rounded-[40px] border border-[#222222] shadow-[0_0_50px_rgba(0,0,0,0.5)] min-h-[230px] sm:min-h-[240px] lg:min-h-[228px]"
+        >
+          {/* Background Image - Fully covering the container */}
+          <img
+            src={CtaBg}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-[center_75%] sm:object-center scale-[1.14] sm:scale-[1.1] lg:scale-[1.06] pointer-events-none select-none"
+          />
 
-        <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-          {/* Logo Icon Accent */}
-          <div className="w-12 h-12 rounded-full bg-[#FFC80B]/20 text-[#FFC80B] flex items-center justify-center mb-6">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
+        
+
+          <div className="relative z-10 flex w-full flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 lg:gap-7 px-4 py-5 sm:px-8 sm:py-8 lg:px-14 lg:py-10">
+            {/* Left - Icon and Text */}
+            <div className="w-full lg:max-w-[72%] lg:ml-16">
+              {/* Text Content */}
+              <div>
+                <h2 className="text-[19px] sm:text-[26px] md:text-[28px] lg:text-[30px] font-extrabold text-white leading-[26px] sm:leading-[34px] lg:leading-[36px]">
+                  Build the Future <span className="text-[#FFC80B]">With Us</span>
+                </h2>
+                <p className="mt-2 max-w-[800px] text-white text-[13px] sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[19px] sm:leading-[24px] lg:leading-[27px]">
+                  Take the next step in your career and become part of a team committed to innovation, collaboration, and impactful digital transformation.
+                </p>
+              </div>
+            </div>
+
+            {/* Right - Explore Button */}
+            <button
+              onClick={() => {
+                const jobsSection = document.getElementById('jobs-section');
+                if (jobsSection) {
+                  jobsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="self-start lg:self-center mt-1 sm:mt-2 lg:mt-0 px-5 sm:px-8 lg:px-10 py-2.5 sm:py-3.5 rounded-full bg-[#FFC80B] text-black font-bold text-[15px] sm:text-base transition-all duration-300 hover:scale-105 hover:bg-[#F5B90C] hover:shadow-[0_10px_25px_rgba(251,191,36,0.3)] active:scale-95 shrink-0 whitespace-nowrap"
+            >
+              Explore Openings
+            </button>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Build the Future <span className="text-[#FFC80B]">With Us</span>
-          </h2>
-          <p className="text-gray-400 text-base sm:text-lg mb-8 max-w-2xl leading-relaxed">
-            Take the next steps in your career and become part of a team committed to innovation, collaboration, and impactful digital transformation.
-          </p>
-
-          <button
-            onClick={() => {
-              const jobsSection = document.getElementById('jobs-section');
-              if (jobsSection) {
-                jobsSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="px-8 py-3.5 rounded-full bg-[#FFC80B] text-black font-bold text-base transition-all duration-300 hover:scale-105 hover:bg-[#F5B90C] hover:shadow-[0_10px_25px_rgba(251,191,36,0.3)] active:scale-95"
-          >
-            Explore Openings
-          </button>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

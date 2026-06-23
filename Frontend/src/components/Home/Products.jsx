@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-// Import product image from assets
+// Import product images from assets
 import HospitalImage from '../../assets/HospitalManagement.png';
 import HospitalImage2 from '../../assets/HospitalManagement2.png';
 
@@ -23,35 +23,66 @@ export default function Products() {
     }
   }, [isInView, controls]);
 
-  const stats = [
-    { value: "10+", label: "INDUSTRIES SERVED" },
-    { value: "5+", label: "YEARS PARTNERSHIP" },
-    { value: "40%", label: "EFFICIENCY BOOST" }
-  ];
-
   const products = [
     {
       id: 1,
       title: "Hospital Management System",
       description: "A comprehensive platform to streamline hospital operations and enhance patient care.",
+      // Left side content (different from right side)
+      leftTitle: "Hospital Management System",
+      leftDescription: "Streamline hospital operations, enhance patient care, and improve administrative efficiency with our comprehensive healthcare platform.",
       image: HospitalImage,
-      category: "Healthcare"
+      category: "Healthcare",
+      stats: [
+        { value: "10+", label: "HOSPITALS" },
+        { value: "95%", label: "SATISFACTION" },
+        { value: "24/7", label: "SUPPORT" }
+      ],
+      subtitle: "Healthcare Innovation",
+      // Right side content (different from left side)
+      rightTitle: "Healthcare Management Platform",
+      rightDescription: "A comprehensive platform to streamline hospital operations and enhance patient care.",
+      color: "#FFC80B"
     },
     {
       id: 2,
       title: "AI Platform for Government Intelligence",
       description: "An AI-powered analytics platform enabling data-driven decisions and smarter governance.",
+      leftTitle: "AI-Powered Government Intelligence",
+      leftDescription: "Empower government agencies with AI-driven insights, predictive analytics, and real-time intelligence for better decision-making and governance.",
       image: HospitalImage2,
-      category: "AI / GOVT"
+      category: "AI / GOVT",
+      stats: [
+        { value: "15+", label: "AGENCIES" },
+        { value: "98%", label: "ACCURACY" },
+        { value: "24/7", label: "OPERATIONAL" }
+      ],
+      subtitle: "Government Intelligence",
+      rightTitle: "AI Platform for Government Intelligence",
+      rightDescription: "An AI-powered analytics platform enabling data-driven decisions and smarter governance.",
+      color: "#FFC80B"
     },
     {
       id: 3,
       title: "Digital Banking Transformation",
       description: "Modern digital solutions for seamless banking experiences.",
+      leftTitle: "Digital Banking Transformation",
+      leftDescription: "Transform your banking operations with modern digital solutions, seamless customer experiences, and innovative financial technology.",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop",
-      category: "FinTech"
+      category: "FinTech",
+      stats: [
+        { value: "50+", label: "BANKS" },
+        { value: "99.9%", label: "UPTIME" },
+        { value: "1M+", label: "USERS" }
+      ],
+      subtitle: "Financial Technology",
+      rightTitle: "Digital Banking Transformation",
+      rightDescription: "Modern digital solutions for seamless banking experiences.",
+      color: "#FFC80B"
     }
   ];
+
+  const currentProduct = products[currentSlide];
 
   // Auto-slide functionality
   useEffect(() => {
@@ -68,7 +99,6 @@ export default function Products() {
     };
   }, [isAutoPlaying, products.length]);
 
-  // Pause autoplay on hover
   const handleMouseEnter = () => {
     setIsAutoPlaying(false);
     if (autoPlayTimerRef.current) {
@@ -137,8 +167,18 @@ export default function Products() {
     },
   };
 
+  // Slide change animation for content
+  const slideContentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section ref={sectionRef} className="py-8 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-4 sm:px-6 lg:px-8 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -157,7 +197,7 @@ export default function Products() {
           </div>
 
           {/* Main Title with colored words */}
-          <h2 className="text-[35px] font-bold leading-[48px] text-black">
+          <h2 className="text-[28px] sm:text-[35px] font-bold leading-[38px] sm:leading-[48px] text-black">
             Built to simplify. <span className="text-[#FFC80B]">Designed</span> to scale. <span className="text-[#FFC80B]">Created</span> for impact.
           </h2>
         </motion.div>
@@ -172,29 +212,35 @@ export default function Products() {
           onMouseLeave={handleMouseLeave}
         >
           <div className="flex flex-col lg:flex-row">
-            {/* Left Sidebar - Stats */}
-            <div className="w-full lg:w-[420px] p-8 lg:p-12 xl:p-14 border-r border-white/5">
-              <div className="space-y-6">
-                {/* WHERE IDEAS BECOME */}
+            {/* Left Sidebar - Dynamic Content with different heading/description */}
+            <div className="w-full lg:w-[420px] p-6 sm:p-8 lg:p-12 xl:p-14 border-r border-white/5">
+              <motion.div
+                key={currentSlide}
+                variants={slideContentVariants}
+                initial="hidden"
+                animate="visible"
+                className="space-y-6"
+              >
+                {/* Category / Subtitle */}
                 <div>
                   <p className="text-[12px] font-bold tracking-[1.2px] uppercase text-[#FFC80B]">
-                    WHERE IDEAS BECOME
+                    {currentProduct.subtitle}
                   </p>
                 </div>
 
-                {/* Main Heading */}
-                <h2 className="text-[36px] md:text-[42px] lg:text-[48px] font-bold text-white leading-[50px] md:leading-[55px] lg:leading-[60px]">
-                  Impactful Digital Solutions.
+                {/* Main Heading - Left side specific */}
+                <h2 className="text-[32px] md:text-[38px] lg:text-[42px] font-bold text-white leading-[40px] md:leading-[48px] lg:leading-[52px]">
+                  {currentProduct.leftTitle}
                 </h2>
 
-                {/* Description */}
+                {/* Description - Left side specific */}
                 <p className="text-[14px] font-normal text-[#6B7280] leading-5 pt-2">
-                  From concept to scale, we turn ideas into high-performing digital products that create measurable impact.
+                  {currentProduct.leftDescription}
                 </p>
 
-                {/* Stats */}
+                {/* Dynamic Stats - Changes with product */}
                 <div className="space-y-6 pt-6">
-                  {stats.map((stat, index) => (
+                  {currentProduct.stats.map((stat, index) => (
                     <div key={index} className="space-y-0.5">
                       <p className="text-[24px] font-bold text-[#FFC80B] leading-8">
                         {stat.value}
@@ -206,17 +252,17 @@ export default function Products() {
                   ))}
                 </div>
 
-                {/* View All Projects Button */}
+                {/* View All Products Button */}
                 <button
                   onClick={handleViewAll}
                   className="mt-8 px-8 py-3 bg-[#FFC80B] text-black font-bold rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FFC80B]/30"
                 >
-                  View All Projects →
+                  View All Products →
                 </button>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Right Side - Product Slider */}
+            {/* Right Side - Product Slider with different heading/description */}
             <motion.div
               variants={sliderVariants}
               initial="hidden"
@@ -241,13 +287,13 @@ export default function Products() {
                     }}></div>
                   </div>
 
-                  {/* Content - positioned higher from bottom */}
+                  {/* Right Side Content - uses rightTitle and rightDescription */}
                   <div className="absolute bottom-32 left-8 right-8 md:bottom-32 md:left-12 md:right-12 space-y-4 z-10">
                     <h3 className="text-[28px] md:text-[36px] lg:text-[40px] font-bold text-white leading-[36px] md:leading-[40px]">
-                      {product.title}
+                      {product.rightTitle}
                     </h3>
                     <p className="text-white text-[14px] md:text-[16px] font-semibold leading-6 max-w-[512px]">
-                      {product.description}
+                      {product.rightDescription}
                     </p>
                     <button
                       onClick={() => handleViewDetails(product.id)}
@@ -281,7 +327,7 @@ export default function Products() {
                 </svg>
               </button>
 
-              {/* Slide Indicators - Moved under View Details button */}
+              {/* Slide Indicators */}
               <div className="absolute bottom-18 left-8 right-8 md:left-12 md:right-12 flex items-center gap-2 z-20">
                 {products.map((_, index) => (
                   <button
@@ -312,7 +358,7 @@ export default function Products() {
         >
           <button
             onClick={handleViewAll}
-            className="group inline-flex items-center justify-center mx-auto gap-1.5 px-6 py-5 border border-[#FAD007] bg-[rgba(0,0,0,0.004)] text-black font-semibold rounded-full hover:bg-[#e6b40a] transition-all duration-300 font-Montserrat"
+            className="group inline-flex items-center justify-center mx-auto gap-1.5 px-6 py-5 border border-[#FAD007] bg-[rgba(0,0,0,0.004)] text-black font-semibold rounded-full hover:bg-[#e6b40a] transition-all duration-300"
             style={{
               width: "321px",
               height: "48px",

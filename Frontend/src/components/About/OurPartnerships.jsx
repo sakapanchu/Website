@@ -6,6 +6,9 @@ import ScoutingImage from '../../assets/scouting-association.png';
 import GovernmentImage from '../../assets/government-sri-lanka.png';
 import DavidPierisImage from '../../assets/david-pieris-group.png';
 import WPRPTAImage from '../../assets/wprpta-sri-lanka.png';
+import PROSENSEImage from '../../assets/prosense.png';
+import AlbertaHealthServicesImage from '../../assets/AHS.jpg';
+import RealtorImage from '../../assets/realtor.jpg';
 
 export default function OurPartnerships() {
   const sectionRef = useRef(null);
@@ -52,34 +55,48 @@ export default function OurPartnerships() {
       id: 1,
       name: "Scouting Association",
       image: ScoutingImage,
-      imageWidth: "w-12",
-      imageHeight: "h-12"
+      imageWidth: "w-10 h-10",
     },
     {
       id: 2,
       name: "Government of Sri Lanka",
       image: GovernmentImage,
-      imageWidth: "w-12",
-      imageHeight: "h-12"
+      imageWidth: "w-10 h-10",
     },
     {
       id: 3,
       name: "David Pieris Group",
       image: DavidPierisImage,
-      imageWidth: "w-20",
-      imageHeight: "h-12"
+      imageWidth: "w-16 h-10",
     },
     {
       id: 4,
       name: "W.P.R.P.T.A Sri Lanka",
       image: WPRPTAImage,
-      imageWidth: "w-12",
-      imageHeight: "h-12"
-    }
+      imageWidth: "w-10 h-10",
+    },
+    {
+      id: 5,
+      name: "Prosense Reality Brokerage",
+      image: PROSENSEImage,
+      imageWidth: "w-10 h-10",
+    },
+    {
+      id: 6,
+      name: "Alberta Health Services",
+      image: AlbertaHealthServicesImage,
+      imageWidth: "w-10 h-10",
+    },
+    {
+      id: 7,
+      name: "Realtor.ca",
+      image: RealtorImage,
+      imageWidth: "w-10 h-10",
+    },
   ];
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-4 sm:px-6 lg:px-8 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -103,10 +120,10 @@ export default function OurPartnerships() {
               <motion.div
                 key={partner.id}
                 variants={itemVariants}
-                className="bg-[#FFC80B]/10 border border-[#FFC80B] rounded-[50px] px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-center gap-3 sm:gap-4 hover:bg-[#FFC80B]/20 transition-all duration-300 min-h-[80px] sm:min-h-[96px]"
+                className="bg-[#FFC80B]/10 border border-[#FFC80B] rounded-[50px] px-4 sm:px-6 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 hover:bg-[#FFC80B]/20 transition-all duration-300 min-h-[80px] sm:min-h-[96px]"
               >
-                {/* Logo */}
-                <div className={`${partner.imageWidth} ${partner.imageHeight} flex-shrink-0 flex items-center justify-center`}>
+                {/* Logo - Left side */}
+                <div className={`${partner.imageWidth} flex-shrink-0 flex items-center justify-center`}>
                   <img 
                     src={partner.image} 
                     alt={partner.name}
@@ -114,9 +131,8 @@ export default function OurPartnerships() {
                   />
                 </div>
                 
-              
-                {/* Partner Name */}
-                <h3 className="text-base sm:text-lg lg:text-[18px] font-bold text-[#000000] leading-6 sm:leading-7 lg:leading-[28px] whitespace-nowrap opacity-70 text-center">
+                {/* Partner Name - Right side */}
+                <h3 className="text-sm whitespace-nowrap sm:text-base lg:text-[18px] font-bold text-[#000000] leading-5 sm:leading-6 lg:leading-[28px] opacity-70 text-left flex-1">
                   {partner.name}
                 </h3>
               </motion.div>

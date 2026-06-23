@@ -151,7 +151,7 @@ export default function AboutUs() {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 px-8 bg-[#F1F1F1]   overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-3 sm:px-6 bg-[#F1F1F1]   overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* Section Header */}
         <motion.div

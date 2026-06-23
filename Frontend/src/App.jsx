@@ -13,6 +13,7 @@ import CareersApply from "./page/Career/CareersApply";
 import AboutUs from "./page/About/AboutUs";
 import Contact from "./page/Contact/Contact";
 import Blog from "./page/Blog/Blog";
+import BlogDetails from "./page/Blog/BlogDetails";
 
 
 // import Products from "./pages/Products";
@@ -44,7 +45,8 @@ function App() {
         <Route path="/careers/apply/:id" element={<CareersApply />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog" element={<Blog/>}/>
+        <Route path="/blog/:slug" element={<BlogDetails />} />
       
         {/* Add other routes as you create them */}
         {/* <Route path="/products" element={<Products />} /> */}

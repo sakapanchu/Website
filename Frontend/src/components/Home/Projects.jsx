@@ -13,6 +13,7 @@ export default function Projects() {
   const navigate = useNavigate();
   const [hoveredProject, setHoveredProject] = useState(null);
   const sectionRef = useRef(null);
+  const mobileScrollRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   const controls = useAnimation();
 
@@ -23,6 +24,29 @@ export default function Projects() {
       controls.start("hidden");
     }
   }, [isInView, controls]);
+
+  // Set initial scroll position to the middle set of projects for mobile infinite scroll
+  useEffect(() => {
+    const container = mobileScrollRef.current;
+    if (container) {
+      const singleSetWidth = container.scrollWidth / 3;
+      container.scrollLeft = singleSetWidth;
+    }
+  }, []);
+
+  const handleMobileScroll = () => {
+    const container = mobileScrollRef.current;
+    if (!container) return;
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const singleSetWidth = scrollWidth / 3;
+
+    // Reset scroll position to middle block when reaching start or end boundaries
+    if (scrollLeft <= 5) {
+      container.scrollLeft = singleSetWidth + scrollLeft;
+    } else if (scrollLeft + clientWidth >= scrollWidth - 5) {
+      container.scrollLeft = scrollLeft - singleSetWidth;
+    }
+  };
 
   const projects = [
     {
@@ -187,10 +211,14 @@ export default function Projects() {
           className="space-y-6"
         >
           {/* Mobile Horizontal Snap Scroll View (visible on mobile only) */}
-          <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 w-full -mx-4 px-4">
-            {projects.map((project) => (
+          <div
+            ref={mobileScrollRef}
+            onScroll={handleMobileScroll}
+            className="flex lg:hidden overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 w-full -mx-4 px-4"
+          >
+            {[...projects, ...projects, ...projects].map((project, index) => (
               <motion.div
-                key={project.id}
+                key={`${project.id}-${index}`}
                 variants={cardVariants}
                 className="relative shrink-0 w-[88vw] sm:w-[340px] snap-center cursor-pointer rounded-[32px] overflow-hidden shadow-md h-[400px]"
                 style={{ minHeight: "400px", maxHeight: "400px" }}

@@ -12,6 +12,7 @@ import Careers from "./page/Career/Careers";
 import CareersApply from "./page/Career/CareersApply";
 import AboutUs from "./page/About/AboutUs";
 import Contact from "./page/Contact/Contact";
+import Blog from "./page/Blog/Blog";
 
 
 // import Products from "./pages/Products";
@@ -43,6 +44,7 @@ function App() {
         <Route path="/careers/apply/:id" element={<CareersApply />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blog" element={<Blog />} />
       
         {/* Add other routes as you create them */}
         {/* <Route path="/products" element={<Products />} /> */}

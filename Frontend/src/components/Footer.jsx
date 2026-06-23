@@ -52,7 +52,7 @@ export default function Footer() {
   };
 
   return (
-    <footer ref={sectionRef} className="py-6  bg-[#F1F1F1] px-8 overflow-hidden">
+    <footer ref={sectionRef} className="py-6 px-3 sm:px-6 md:px-8 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         <motion.div
           variants={containerVariants}

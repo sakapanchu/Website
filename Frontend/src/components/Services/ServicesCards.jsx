@@ -96,44 +96,17 @@ export default function ServicesCards() {
 
   // Service data with slugs for routing
   const services = [
-    {
+     {
       id: 1,
-      slug: "ai-development",
-      title: "AI Development",
-      description: "Create AI-powered systems that automate workflows, predict trends, and deliver smarter business decisions.",
-      image: AICardImage,
+      slug: "digital-transformation",
+      title: "Digital Transformation",
+      description: "Connect your systems, applications, and data with secure and reliable API integrations.",
+      image: APICardImage,
       bgImage: CardBg,
-      icon: getIcon
+      icon: getAPIIcon
     },
-    {
+     {
       id: 2,
-      slug: "web-development",
-      title: "Web Development",
-      description: "High-performance websites and web applications built for speed, security, and conversions.",
-      image: WebCardImage,
-      bgImage: CardBg,
-      icon: getWebIcon
-    },
-    {
-      id: 3,
-      slug: "cloud-solutions",
-      title: "Cloud Solutions",
-      description: "Secure, scalable cloud infrastructure designed for performance, reliability, and business growth.",
-      image: CloudCardImage,
-      bgImage: CardBg,
-      icon: getCloudIcon
-    },
-    {
-      id: 4,
-      slug: "ui-ux-design",
-      title: "UI/UX Design",
-      description: "User-centered designs that create seamless experiences and increase customer engagement.",
-      image: UICardImage,
-      bgImage: CardBg,
-      icon: getUIIcon
-    },
-    {
-      id: 5,
       slug: "mobile-development",
       title: "Mobile Development",
       description: "Powerful mobile apps for iOS and Android that delight users and drive business growth.",
@@ -142,14 +115,74 @@ export default function ServicesCards() {
       icon: getMobileIcon
     },
     {
+      id: 3,
+      slug: "saas-application",
+      title: "SaaS Application",
+      description: "Build scalable and secure SaaS applications that drive business growth and enhance user experience.",
+      image: MobileCardImage,
+      bgImage: CardBg,
+      icon: getMobileIcon
+    },
+     {
+      id: 4,
+      slug: "web-development",
+      title: "Web Development",
+      description: "High-performance websites and web applications built for speed, security, and conversions.",
+      image: WebCardImage,
+      bgImage: CardBg,
+      icon: getWebIcon
+    },
+     {
+      id: 5,
+      slug: "ui-ux-design",
+      title: "Designs and Editing",
+      description: "User-centered designs that create seamless experiences and increase customer engagement.",
+      image: UICardImage,
+      bgImage: CardBg,
+      icon: getUIIcon
+    },
+    {
       id: 6,
-      slug: "api-integration",
-      title: "API Integration",
-      description: "Connect your systems, applications, and data with secure and reliable API integrations.",
+      slug: "digital-marketing",
+      title: "Digital Marketing",
+      description: "Secure, scalable cloud infrastructure designed for performance, reliability, and business growth.",
+      image: CloudCardImage,
+      bgImage: CardBg,
+      icon: getCloudIcon
+    },
+     {
+      id: 7,
+      slug: "cloud-solutions",
+      title: "Cloud Solutions",
+      description: "Secure, scalable cloud infrastructure designed for performance, reliability, and business growth.",
+      image: CloudCardImage,
+      bgImage: CardBg,
+      icon: getCloudIcon
+    },
+     {
+      id: 8,
+      slug: "financial-risk-analysis",
+      title: "Financial Risk Analysis",
+      description: "Analyze financial risks and make informed decisions with our comprehensive risk assessment solutions.",
       image: APICardImage,
       bgImage: CardBg,
       icon: getAPIIcon
-    }
+    },
+    {
+      id: 9,
+      slug: "ai-and-robotic-for-business",
+      title: "AI And Robotic for Business",
+      description: "Create AI-powered systems that automate workflows, predict trends, and deliver smarter business decisions.",
+      image: AICardImage,
+      bgImage: CardBg,
+      icon: getIcon
+    },
+    
+   
+   
+   
+   
+   
   ];
 
   // Group services into rows of 3

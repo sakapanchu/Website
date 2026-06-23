@@ -160,40 +160,31 @@ export default function Header() {
               group
               flex items-center gap-2
               px-5 py-2.5
-              rounded-[30px]
-              border border-[#FFC80B]
-              bg-[rgba(255,200,11,0.20)]
-              text-[#7B5901]
+             rounded-full
+              bg-gradient-to-b from-[#FFC80B] to-[#CEA107] text-white shadow-lg shadow-[#D4A017]/30 hover:shadow-xl hover:shadow-[#D4A017]/40
               font-bold text-[14px]
               transition-all duration-300 ease-out
               hover:scale-110
               hover:-translate-y-1
-              hover:bg-[#FFC80B]
-              hover:text-black
-              hover:shadow-[0_15px_35px_rgba(251,191,36,0.5)]
-              active:scale-95
+              
             "
-            style={{
-              boxShadow:
-                "0 4px 16px 0 #FBBF24, 4px 4px 25px 0 rgba(251,191,36,0.30) inset",
-            }}
+           
           >
             Let's Talk
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            >
-              <path
-                d="M9.33333 12.6667L14 8.00004L9.33333 3.33337M14 8.00004H2"
-                stroke="#7B5901"
-                strokeWidth="1.33333"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+           <svg
+  width="16"
+  height="16"
+  viewBox="0 0 16 16"
+  fill="none"
+  className="transition-transform duration-300 group-hover:translate-x-1 stroke-white"
+>
+  <path
+    d="M9.33333 12.6667L14 8.00004L9.33333 3.33337M14 8.00004H2"
+    strokeWidth="1.33333"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>
           </Link>
         </div>
 
@@ -239,7 +230,7 @@ export default function Header() {
             <Link
               to="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 text-center px-5 py-2.5 rounded-[30px] border border-[#FFC80B] bg-[rgba(255,200,11,0.20)] text-[#7B5901] font-bold text-[14px]"
+              className="mt-2 text-center px-5 py-2.5 rounded-full bg-gradient-to-b from-[#FFC80B] to-[#CEA107] text-white shadow-lg shadow-[#D4A017]/30 hover:shadow-xl hover:shadow-[#D4A017]/40 font-bold text-[14px]"
             >
               Let's Talk
             </Link>

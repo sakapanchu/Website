@@ -17,10 +17,10 @@ export default function BottomCTA() {
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
@@ -40,7 +40,7 @@ export default function BottomCTA() {
             className="absolute inset-0 w-full h-full object-cover object-[center_75%] sm:object-center scale-[1.14] sm:scale-[1.1] lg:scale-[1.06] pointer-events-none select-none"
           />
 
-        
+
 
           <div className="relative z-10 flex w-full flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 lg:gap-7 px-4 py-5 sm:px-8 sm:py-8 lg:px-14 lg:py-10">
             {/* Left - Icon and Text */}

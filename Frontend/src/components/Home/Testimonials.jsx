@@ -126,7 +126,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-16 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* Testimonials Section - Dark Background */}
         <motion.div
@@ -154,18 +154,17 @@ export default function Testimonials() {
                   <motion.div
                     key={`${card.id}-${card.position}`}
                     initial={{ opacity: 0, scale: 0.9, x: card.position * 30 }}
-                    animate={{ 
-                      opacity: 1, 
+                    animate={{
+                      opacity: 1,
                       scale: isCenter ? 1 : 0.88,
                       x: 0,
                       y: isCenter ? -10 : 0
                     }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className={`relative rounded-2xl p-6 backdrop-blur-sm transition-all duration-500 flex-1 ${
-                      isCenter 
-                        ? 'bg-gradient-to-br from-white/12 to-white/5 border border-white/30 shadow-[0px_0px_15px_rgba(255,255,255,0.05)] min-h-[400px]' 
-                        : 'bg-gradient-to-br from-white/8 to-white/2 border border-white/10 shadow-[0px_8px_32px_rgba(0,0,0,0.37)] min-h-[360px]'
-                    }`}
+                    className={`relative rounded-2xl p-6 backdrop-blur-sm transition-all duration-500 flex-1 ${isCenter
+                      ? 'bg-gradient-to-br from-white/12 to-white/5 border border-white/30 shadow-[0px_0px_15px_rgba(255,255,255,0.05)] min-h-[400px]'
+                      : 'bg-gradient-to-br from-white/8 to-white/2 border border-white/10 shadow-[0px_8px_32px_rgba(0,0,0,0.37)] min-h-[360px]'
+                      }`}
                   >
                     {/* Gradient Top */}
                     <div className="absolute top-0 left-0 right-0 h-[87px] bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
@@ -183,8 +182,8 @@ export default function Testimonials() {
                       {/* Profile Image and Name */}
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/10">
-                          <img 
-                            src={card.image} 
+                          <img
+                            src={card.image}
                             alt={card.name}
                             className="w-full h-full object-cover"
                           />
@@ -198,9 +197,8 @@ export default function Testimonials() {
                       </div>
 
                       {/* Testimonial Text */}
-                      <p className={`text-sm leading-[23px] italic flex-1 ${
-                        isCenter ? 'text-[#E5E7EB]' : 'text-[#D1D5DB]'
-                      }`}>
+                      <p className={`text-sm leading-[23px] italic flex-1 ${isCenter ? 'text-[#E5E7EB]' : 'text-[#D1D5DB]'
+                        }`}>
                         "{card.text}"
                       </p>
 

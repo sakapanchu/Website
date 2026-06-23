@@ -51,7 +51,7 @@ export default function ServiceProcess({ service }) {
   ];
 
   return (
-    <section className="bg-white max-w-[1430px] mx-auto rounded-3xl py-12 px-8 my-8">
+    <section className="bg-white max-w-[1430px] mx-auto rounded-3xl py-12 px-3 sm:px-6 my-8">
       <div className="max-w-[1430px] mx-auto">
         {/* Header */}
         <motion.div
@@ -90,8 +90,8 @@ export default function ServiceProcess({ service }) {
               >
                 <div className="flex justify-between items-start mb-4">
                   <div className={`w-12 h-12 bg-[#FBBF24] rounded-xl flex items-center justify-center transition-all duration-500 ${effect.iconBg}`}>
-                    <img 
-                      src={step.icon} 
+                    <img
+                      src={step.icon}
                       alt={step.title}
                       className="w-6 h-6 object-contain"
                     />

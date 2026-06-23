@@ -178,7 +178,7 @@ export default function Products() {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 px-4 sm:px-6 lg:px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-3 sm:px-6 lg:px-8 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -255,7 +255,7 @@ export default function Products() {
                 {/* View All Products Button */}
                 <button
                   onClick={handleViewAll}
-                  className="mt-8 px-8 py-3 bg-[#FFC80B] text-black font-bold rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FFC80B]/30"
+                  className="mt-8 px-3 sm:px-6 py-3 bg-[#FFC80B] text-black font-bold rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FFC80B]/30"
                 >
                   View All Products →
                 </button>
@@ -272,9 +272,8 @@ export default function Products() {
               {products.map((product, index) => (
                 <div
                   key={product.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
                 >
                   {/* Background Image */}
                   <div
@@ -336,11 +335,10 @@ export default function Products() {
                       setCurrentSlide(index);
                       resetAutoPlayTimer();
                     }}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      index === currentSlide
-                        ? 'w-8 bg-[#FFC80B]'
-                        : 'w-2 bg-white/30 hover:bg-white/50'
-                    }`}
+                    className={`h-1 rounded-full transition-all duration-300 ${index === currentSlide
+                      ? 'w-8 bg-[#FFC80B]'
+                      : 'w-2 bg-white/30 hover:bg-white/50'
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}

@@ -58,7 +58,7 @@ export default function LetsTalkHero() {
       >
         {/* Content wrapper */}
         <div className="relative z-10 flex flex-col min-h-[260px]">
-          <div className="flex-1 px-8 sm:px-12 lg:px-16 py-12 flex items-center">
+          <div className="flex-1 px-3 sm:px-6 sm:px-12 lg:px-16 py-12 flex items-center">
             <motion.div variants={contentVariants} className="max-w-2xl">
               <h1 className="text-4xl sm:text-5xl lg:text-[48px] font-bold leading-[1.2] lg:leading-[60px] mb-4">
                 <span className="text-white [text-shadow:0_1px_0_#000]">

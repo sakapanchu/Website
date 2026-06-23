@@ -103,13 +103,13 @@ export default function Partners() {
         animationId = requestAnimationFrame(scroll);
         return;
       }
-      
+
       if (!isClientHovering) {
         scrollPosition += speed;
-        
+
         // Calculate the total width of one set of logos
         const totalWidth = container.scrollWidth / 3;
-        
+
         if (scrollPosition >= totalWidth) {
           // Reset position smoothly
           scrollPosition = 0;
@@ -118,7 +118,7 @@ export default function Partners() {
           container.scrollLeft = scrollPosition;
         }
       }
-      
+
       animationId = requestAnimationFrame(scroll);
     };
 
@@ -145,13 +145,13 @@ export default function Partners() {
         animationId = requestAnimationFrame(scroll);
         return;
       }
-      
+
       if (!isPartnerHovering) {
         scrollPosition += speed;
-        
+
         // Calculate the total width of one set of logos
         const totalWidth = container.scrollWidth / 3;
-        
+
         if (scrollPosition >= totalWidth) {
           // Reset position smoothly
           scrollPosition = 0;
@@ -160,7 +160,7 @@ export default function Partners() {
           container.scrollLeft = scrollPosition;
         }
       }
-      
+
       animationId = requestAnimationFrame(scroll);
     };
 
@@ -201,15 +201,15 @@ export default function Partners() {
 
   // Animation variants
   const logosVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: 100,
     },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         ease: "easeOut",
         delay: 0.2,
       },
@@ -217,15 +217,15 @@ export default function Partners() {
   };
 
   const bannerVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: -100,
     },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         ease: "easeOut",
         delay: 0.6,
       },
@@ -244,14 +244,14 @@ export default function Partners() {
         >
           {/* Left Gradient Overlay */}
           <div className="absolute left-0 top-0 w-20 md:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          
+
           {/* Right Gradient Overlay */}
           <div className="absolute right-0 top-0 w-20 md:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
           {/* Scrolling Container */}
           <div
             ref={clientScrollRef}
-            className="flex items-center gap-12 md:gap-16 lg:gap-20 min-h-[120px] overflow-x-hidden scroll-smooth px-8"
+            className="flex items-center gap-12 md:gap-16 lg:gap-20 min-h-[120px] overflow-x-hidden scroll-smooth px-3 sm:px-6"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -260,11 +260,10 @@ export default function Partners() {
             {scrollingLogos.map((logo, index) => (
               <div
                 key={`client-${logo.id}-${index}`}
-                className={`flex-shrink-0 transition-all duration-300 cursor-pointer ${
-                  hoveredLogo === logo.id 
-                    ? 'scale-110 opacity-100' 
+                className={`flex-shrink-0 transition-all duration-300 cursor-pointer ${hoveredLogo === logo.id
+                    ? 'scale-110 opacity-100'
                     : 'opacity-90 hover:opacity-100'
-                }`}
+                  }`}
                 onMouseEnter={() => handleLogoHover(logo.id, 'client')}
                 onMouseLeave={() => handleLogoLeave('client')}
                 style={{
@@ -272,9 +271,9 @@ export default function Partners() {
                   transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
                 }}
               >
-                <img 
-                  src={logo.src} 
-                  alt={logo.alt} 
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
                   className="h-10 md:h-16 lg:h-24 w-auto object-contain"
                 />
               </div>
@@ -293,7 +292,7 @@ export default function Partners() {
           }}
         >
           {/* Dot Background Pattern */}
-          <div 
+          <div
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `radial-gradient(70.71% 70.71% at 50% 50%, #000000 3.54%, rgba(0, 0, 0, 0) 3.54%)`,
@@ -305,7 +304,7 @@ export default function Partners() {
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             {/* Oracle Gold Partner Badge */}
             <div className="flex-shrink-0">
-              <div className="flex items-center gap-8 px-8 py-8 bg-[#F9FAFB] border border-black/5 rounded-2xl" style={{
+              <div className="flex items-center gap-8 px-3 sm:px-6 py-8 bg-[#F9FAFB] border border-black/5 rounded-2xl" style={{
                 boxShadow: "0px 4px 20px #9CA3AF",
               }}>
                 <div className="text-[24px] font-bold tracking-[-1.2px] text-red-600">
@@ -337,7 +336,7 @@ export default function Partners() {
               <div className="flex flex-wrap gap-4 mt-6">
                 <button
                   onClick={handleOurCapabilities}
-                  className="px-8 py-[13px] bg-[#FFC80B] text-black font-bold text-[14px] rounded-full hover:bg-[#e6b40a] transition-all duration-300"
+                  className="px-3 sm:px-6 py-[13px] bg-[#FFC80B] text-black font-bold text-[14px] rounded-full hover:bg-[#e6b40a] transition-all duration-300"
                   style={{
                     boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1)",
                   }}
@@ -346,7 +345,7 @@ export default function Partners() {
                 </button>
                 <button
                   onClick={handleLearnMore}
-                  className="px-8 py-3 border border-black/10 text-black font-bold text-[14px] rounded-full hover:bg-gray-50 transition-all duration-300"
+                  className="px-3 sm:px-6 py-3 border border-black/10 text-black font-bold text-[14px] rounded-full hover:bg-gray-50 transition-all duration-300"
                 >
                   Learn more →
                 </button>
@@ -355,7 +354,7 @@ export default function Partners() {
 
             {/* Award Badge */}
             <div className="flex-shrink-0">
-              <div className="bg-white border border-black/5 rounded-2xl px-8 py-8 text-center" style={{
+              <div className="bg-white border border-black/5 rounded-2xl px-3 sm:px-6 py-8 text-center" style={{
                 boxShadow: "0px 4px 20px #9CA3AF",
               }}>
                 <div className="text-[36px] font-bold text-black">
@@ -378,14 +377,14 @@ export default function Partners() {
         >
           {/* Left Gradient Overlay */}
           <div className="absolute left-0 top-0 w-20 md:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          
+
           {/* Right Gradient Overlay */}
           <div className="absolute right-0 top-0 w-20 md:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
           {/* Scrolling Container */}
           <div
             ref={partnerScrollRef}
-            className="flex items-center gap-12 md:gap-16 lg:gap-20 min-h-[100px] overflow-x-hidden scroll-smooth px-8"
+            className="flex items-center gap-12 md:gap-16 lg:gap-20 min-h-[100px] overflow-x-hidden scroll-smooth px-3 sm:px-6"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -394,11 +393,10 @@ export default function Partners() {
             {scrollingLogosPartners.map((logo, index) => (
               <div
                 key={`partner-${logo.id}-${index}`}
-                className={`flex-shrink-0 transition-all duration-300 cursor-pointer ${
-                  hoveredLogo === logo.id 
-                    ? 'scale-110 opacity-100' 
+                className={`flex-shrink-0 transition-all duration-300 cursor-pointer ${hoveredLogo === logo.id
+                    ? 'scale-110 opacity-100'
                     : 'opacity-80 hover:opacity-100'
-                }`}
+                  }`}
                 onMouseEnter={() => handleLogoHover(logo.id, 'partner')}
                 onMouseLeave={() => handleLogoLeave('partner')}
                 style={{
@@ -406,9 +404,9 @@ export default function Partners() {
                   transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
                 }}
               >
-                <img 
-                  src={logo.src} 
-                  alt={logo.alt} 
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
                   className="h-10 md:h-16 lg:h-16 w-auto object-contain"
                 />
               </div>

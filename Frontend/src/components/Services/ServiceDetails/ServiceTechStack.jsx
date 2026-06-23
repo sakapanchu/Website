@@ -23,7 +23,7 @@ export default function ServiceTechStack({ service }) {
   };
 
   return (
-    <section className="bg-white max-w-[1430px] mx-auto rounded-3xl py-12 px-8 my-8">
+    <section className="bg-white max-w-[1430px] mx-auto rounded-3xl py-12 px-3 sm:px-6 my-8">
       <div className="max-w-[1430px] mx-auto">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
@@ -46,10 +46,10 @@ export default function ServiceTechStack({ service }) {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="flex items-center gap-3 px-8 py-5 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+              className="flex items-center gap-3 px-3 sm:px-6 py-5 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
             >
-              <img 
-                src={tech.icon} 
+              <img
+                src={tech.icon}
                 alt={tech.name}
                 className="w-9 h-9 object-contain"
               />

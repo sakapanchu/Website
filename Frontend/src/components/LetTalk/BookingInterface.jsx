@@ -19,13 +19,13 @@ export function BookingInterface() {
   const [selectedTime, setSelectedTime] = useState(null);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonthIndex, setCurrentMonthIndex] = useState(new Date().getMonth());
-  
+
   // Search states for country dropdown
   const [searchCountry, setSearchCountry] = useState('');
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const countryDropdownRef = useRef(null);
   const [phoneError, setPhoneError] = useState('');
-  
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -41,7 +41,7 @@ export function BookingInterface() {
   });
 
   // Filtered countries based on search
-  const filteredCountries = countryCodes.filter(country => 
+  const filteredCountries = countryCodes.filter(country =>
     country.country.toLowerCase().includes(searchCountry.toLowerCase()) ||
     country.code.includes(searchCountry)
   );
@@ -87,24 +87,24 @@ export function BookingInterface() {
   };
 
 
-const validatePhoneNumber = (countryCode, phoneNumber) => {
-  const country = countryCodes.find(c => c.code === countryCode);
-  if (!country) return { isValid: false, message: 'Invalid country code' };
-  
-  // Remove any non-digit characters for validation
-  const cleanNumber = phoneNumber.replace(/\D/g, '');
-  
-  // Check if the number matches the country pattern
-  const pattern = new RegExp(`^${country.pattern}$`);
-  if (pattern.test(cleanNumber)) {
-    return { isValid: true, message: 'Valid phone number' };
-  }
-  
-  return { 
-    isValid: false, 
-    message: `Please enter a valid ${country.country} phone number (e.g., ${country.example})` 
+  const validatePhoneNumber = (countryCode, phoneNumber) => {
+    const country = countryCodes.find(c => c.code === countryCode);
+    if (!country) return { isValid: false, message: 'Invalid country code' };
+
+    // Remove any non-digit characters for validation
+    const cleanNumber = phoneNumber.replace(/\D/g, '');
+
+    // Check if the number matches the country pattern
+    const pattern = new RegExp(`^${country.pattern}$`);
+    if (pattern.test(cleanNumber)) {
+      return { isValid: true, message: 'Valid phone number' };
+    }
+
+    return {
+      isValid: false,
+      message: `Please enter a valid ${country.country} phone number (e.g., ${country.example})`
+    };
   };
-};
 
   // Check if a time slot is in the past for today
   const isPastTime = (timeStr) => {
@@ -117,9 +117,9 @@ const validatePhoneNumber = (countryCode, phoneNumber) => {
   // Check if a time slot is selectable
   const isTimeSelectable = (timeStr) => {
     const dateToCheck = selectedDate || currentDate;
-    const isTodayDate = dateToCheck === currentDate && 
-                        currentMonthIndex === currentMonthName && 
-                        currentYear === currentYearName;
+    const isTodayDate = dateToCheck === currentDate &&
+      currentMonthIndex === currentMonthName &&
+      currentYear === currentYearName;
     if (isTodayDate && isPastTime(timeStr)) {
       return false;
     }
@@ -165,9 +165,9 @@ const validatePhoneNumber = (countryCode, phoneNumber) => {
 
   // Check if a date is today
   const isToday = (day) => {
-    return day === currentDate && 
-           currentMonthIndex === currentMonthName && 
-           currentYear === currentYearName;
+    return day === currentDate &&
+      currentMonthIndex === currentMonthName &&
+      currentYear === currentYearName;
   };
 
   // Check if a date is selected
@@ -213,56 +213,56 @@ const validatePhoneNumber = (countryCode, phoneNumber) => {
 
   // Handle form input changes
   const handleInputChange = (e) => {
-  const { name, value, type, checked } = e.target;
-  
-  if (name === 'contactNumber') {
-    // Only allow digits
-    const digitsOnly = value.replace(/\D/g, '');
-    setFormData(prev => ({
-      ...prev,
-      [name]: digitsOnly
-    }));
-    
-    // Validate if enough digits entered
-    if (digitsOnly.length >= 4) {
-      const validation = validatePhoneNumber(formData.countryCode, digitsOnly);
-      setPhoneError(validation.isValid ? '' : validation.message);
+    const { name, value, type, checked } = e.target;
+
+    if (name === 'contactNumber') {
+      // Only allow digits
+      const digitsOnly = value.replace(/\D/g, '');
+      setFormData(prev => ({
+        ...prev,
+        [name]: digitsOnly
+      }));
+
+      // Validate if enough digits entered
+      if (digitsOnly.length >= 4) {
+        const validation = validatePhoneNumber(formData.countryCode, digitsOnly);
+        setPhoneError(validation.isValid ? '' : validation.message);
+      } else {
+        setPhoneError('');
+      }
     } else {
-      setPhoneError('');
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
     }
-  } else {
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  }
-};
+  };
 
   // Handle form submission
-const handleSubmit = (e) => {
-  e.preventDefault();
-  
-  // Validate phone number before submission
-  if (formData.contactNumber) {
-    const validation = validatePhoneNumber(formData.countryCode, formData.contactNumber);
-    if (!validation.isValid) {
-      setPhoneError(validation.message);
-      return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate phone number before submission
+    if (formData.contactNumber) {
+      const validation = validatePhoneNumber(formData.countryCode, formData.contactNumber);
+      if (!validation.isValid) {
+        setPhoneError(validation.message);
+        return;
+      }
     }
-  }
-  
-  console.log('Form submitted:', { ...formData, selectedDate, selectedTime });
-  navigate('/lets-talk/confirmation');
-};
+
+    console.log('Form submitted:', { ...formData, selectedDate, selectedTime });
+    navigate('/lets-talk/confirmation');
+  };
 
   // Get selected date display
   const getSelectedDateDisplay = () => {
     const dateToShow = selectedDate || currentDate;
     const date = new Date(currentYear, currentMonthIndex, dateToShow);
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'long', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric'
     });
   };
 
@@ -274,18 +274,18 @@ const handleSubmit = (e) => {
   // Animation variants
   const stepVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: "easeOut",
         staggerChildren: 0.1,
         delayChildren: 0.2
       }
     },
-    exit: { 
-      opacity: 0, 
+    exit: {
+      opacity: 0,
       y: -30,
       transition: { duration: 0.4, ease: "easeIn" }
     }
@@ -293,8 +293,8 @@ const handleSubmit = (e) => {
 
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: { duration: 0.4, ease: "easeOut" }
     }
@@ -302,8 +302,8 @@ const handleSubmit = (e) => {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" }
     }
@@ -322,31 +322,30 @@ const handleSubmit = (e) => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 bg-[#F1F1F1] py-6">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-white max-w-[1430px] mx-auto rounded-[32px] border border-[#D3C5AE]/30 shadow-[0_4px_30px_rgba(0,0,0,0.03)] overflow-hidden"
       >
-        
+
         {/* Step Indicator */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           className="bg-[#F6F3F2]/30 border-b border-[#D3C5AE]/20 px-6 sm:px-8 py-4 sm:py-6"
         >
           <div className="flex items-center gap-3 sm:gap-4 justify-center flex-wrap">
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.div 
-                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${
-                  currentStep === 1 ? 'bg-[#FFC80B]' : 'border-2 border-[#D3C5AE]'
-                }`}
-                animate={{ 
+              <motion.div
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${currentStep === 1 ? 'bg-[#FFC80B]' : 'border-2 border-[#D3C5AE]'
+                  }`}
+                animate={{
                   scale: currentStep === 1 ? 1.1 : 1,
                   transition: { duration: 0.3, type: "spring" }
                 }}
@@ -362,16 +361,15 @@ const handleSubmit = (e) => {
 
             <div className="w-12 sm:w-20 h-px bg-[#D3C5AE]/50"></div>
 
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <motion.div 
-                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${
-                  currentStep === 2 ? 'bg-[#FFC80B]' : 'border-2 border-[#D3C5AE]'
-                }`}
-                animate={{ 
+              <motion.div
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${currentStep === 2 ? 'bg-[#FFC80B]' : 'border-2 border-[#D3C5AE]'
+                  }`}
+                animate={{
                   scale: currentStep === 2 ? 1.1 : 1,
                   transition: { duration: 0.3, type: "spring" }
                 }}
@@ -399,13 +397,13 @@ const handleSubmit = (e) => {
               className="flex flex-col lg:flex-row"
             >
               {/* Left Panel - Details */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="w-full lg:w-[35%] p-6 sm:p-8 border-r border-[#D3C5AE]/20"
               >
                 <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="space-y-6 sm:space-y-8">
                   <motion.div variants={fadeInUp} className="flex gap-4">
-                    <motion.div 
+                    <motion.div
                       className="w-10 h-10 sm:w-12 sm:h-12 rounded-[30px] bg-[#FFC80B]/10 border border-[#FFC80B] flex items-center justify-center flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
@@ -421,7 +419,7 @@ const handleSubmit = (e) => {
                   </motion.div>
 
                   <motion.div variants={fadeInUp} className="space-y-4 sm:space-y-8">
-                    <motion.div 
+                    <motion.div
                       className="flex items-center gap-6"
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
@@ -433,7 +431,7 @@ const handleSubmit = (e) => {
                       </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                       className="flex items-center gap-6"
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
@@ -445,7 +443,7 @@ const handleSubmit = (e) => {
                       </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                       className="flex items-center gap-6"
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
@@ -461,18 +459,18 @@ const handleSubmit = (e) => {
               </motion.div>
 
               {/* Center - Calendar */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="w-full lg:w-[35%] p-6 sm:p-8 border-r border-[#D3C5AE]/20"
               >
                 <motion.div variants={fadeInUp}>
                   <h3 className="text-sm sm:text-base font-medium text-[#1C1B1B] mb-6">Select date and time</h3>
                 </motion.div>
-                
+
                 <motion.div variants={fadeInUp}>
                   <div className="flex items-center justify-between mb-4">
-                    <motion.button 
-                      onClick={prevMonth} 
+                    <motion.button
+                      onClick={prevMonth}
                       className="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-gray-100 flex items-center justify-center"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -481,7 +479,7 @@ const handleSubmit = (e) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </motion.button>
-                    <motion.span 
+                    <motion.span
                       className="font-semibold text-sm sm:text-base text-[#1C1B1B]"
                       key={`${currentMonthIndex}-${currentYear}`}
                       initial={{ opacity: 0, y: -10 }}
@@ -490,8 +488,8 @@ const handleSubmit = (e) => {
                     >
                       {monthNames[currentMonthIndex]} {currentYear}
                     </motion.span>
-                    <motion.button 
-                      onClick={nextMonth} 
+                    <motion.button
+                      onClick={nextMonth}
                       className="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-gray-100 flex items-center justify-center"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -513,28 +511,28 @@ const handleSubmit = (e) => {
                   </div>
                 </motion.div>
 
-                <motion.div 
-                  variants={staggerContainer} 
-                  initial="hidden" 
-                  animate="visible" 
+                <motion.div
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
                   className="grid grid-cols-7 gap-1"
                 >
                   {Array.from({ length: firstDay === 0 ? 6 : firstDay - 1 }).map((_, i) => (
                     <div key={`empty-${i}`} className="h-8 sm:h-10"></div>
                   ))}
-                  
+
                   {Array.from({ length: daysInMonth }).map((_, i) => {
                     const day = i + 1;
                     const isTodayDate = isToday(day);
                     const isSelectedDate = isSelected(day);
                     const isPast = isPastDate(day);
                     const selectable = isSelectable(day);
-                    
+
                     let bgColor = '';
                     let textColor = 'text-[#4F4634]/60';
                     let hoverClass = 'hover:bg-gray-50';
                     let fontWeight = 'font-medium';
-                    
+
                     if (isSelectedDate) {
                       bgColor = 'bg-[#FFC80B]';
                       textColor = 'text-[#503A00]';
@@ -561,7 +559,7 @@ const handleSubmit = (e) => {
                       hoverClass = 'hover:bg-gray-50';
                       fontWeight = 'font-medium';
                     }
-                    
+
                     return (
                       <motion.button
                         key={day}
@@ -580,7 +578,7 @@ const handleSubmit = (e) => {
               </motion.div>
 
               {/* Right - Time Slots */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="w-full lg:w-[30%] p-6 sm:p-8"
               >
@@ -589,30 +587,29 @@ const handleSubmit = (e) => {
                     {getSelectedDateDisplay()}
                   </h3>
                 </motion.div>
-                
-                <motion.div 
-                  variants={staggerContainer} 
-                  initial="hidden" 
-                  animate="visible" 
+
+                <motion.div
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
                   className="space-y-2 sm:space-y-3 max-h-[300px] sm:max-h-[362px] overflow-y-auto pr-2"
                 >
                   {timeSlots.map((time, index) => {
                     const selectable = isTimeSelectable(time);
                     const isSelectedTime = selectedTime === time;
-                    
+
                     return (
                       <motion.button
                         key={index}
                         variants={fadeInUp}
                         onClick={() => handleTimeSelect(time)}
                         disabled={!selectable}
-                        className={`w-full py-2 sm:py-3 px-3 sm:px-4 rounded-lg text-center text-xs sm:text-sm transition-all duration-200 ${
-                          isSelectedTime 
-                            ? 'bg-[#FFC80B]/10 border-2 border-[#FFC80B] text-[#1C1B1B] font-semibold' 
+                        className={`w-full py-2 sm:py-3 px-3 sm:px-4 rounded-lg text-center text-xs sm:text-sm transition-all duration-200 ${isSelectedTime
+                            ? 'bg-[#FFC80B]/10 border-2 border-[#FFC80B] text-[#1C1B1B] font-semibold'
                             : selectable
                               ? 'border border-[#D3C5AE]/30 text-[#4F4634] hover:border-[#FFC80B] hover:bg-[#FFC80B]/5'
                               : 'border border-[#D3C5AE]/20 text-[#D3C5AE] cursor-not-allowed opacity-50'
-                        }`}
+                          }`}
                         whileHover={selectable ? { scale: 1.02, x: 3 } : {}}
                         whileTap={selectable ? { scale: 0.98 } : {}}
                       >
@@ -629,7 +626,7 @@ const handleSubmit = (e) => {
         {/* Footer with Next Button - Step 1 */}
         <AnimatePresence>
           {currentStep === 1 && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -639,11 +636,10 @@ const handleSubmit = (e) => {
               <motion.button
                 onClick={handleNext}
                 disabled={!selectedDate || !selectedTime}
-                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 ${
-                  selectedDate && selectedTime
+                className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 ${selectedDate && selectedTime
                     ? 'bg-[#FFC80B] text-[#503A00] hover:bg-[#e6b40a] shadow-lg shadow-[#FFC80B]/30'
                     : 'bg-[#FFC80B]/50 text-[#503A00]/50 cursor-not-allowed min-w-[120px] sm:min-w-[150px]'
-                }`}
+                  }`}
                 whileHover={selectedDate && selectedTime ? { scale: 1.05 } : {}}
                 whileTap={selectedDate && selectedTime ? { scale: 0.95 } : {}}
               >
@@ -665,23 +661,23 @@ const handleSubmit = (e) => {
               className="flex flex-col lg:flex-row gap-6 p-6 sm:p-8"
             >
               {/* Left - Form Box */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="flex-1 bg-white rounded-[32px] border border-[#D3C5AE]/30 shadow-[0_4px_30px_rgba(0,0,0,0.03)] overflow-hidden"
               >
                 <div className="p-6 sm:p-8">
-                  <motion.h2 
+                  <motion.h2
                     variants={fadeInUp}
                     className="text-base font-medium text-[#1C1B1B] mb-6"
                   >
                     Please enter your details
                   </motion.h2>
-                  
-                  <motion.form 
+
+                  <motion.form
                     variants={staggerContainer}
                     initial="hidden"
                     animate="visible"
-                    onSubmit={handleSubmit} 
+                    onSubmit={handleSubmit}
                     className="space-y-6"
                   >
                     {/* First Name & Last Name */}
@@ -735,90 +731,88 @@ const handleSubmit = (e) => {
                           whileFocus={{ scale: 1.01, borderColor: "#FFC80B" }}
                         />
                       </div>
-                      
-                      {/* Contact Number with Country Code - Searchable Dropdown with Validation */}
-<div className="space-y-2">
-  <label className="flex items-center gap-1 text-sm font-semibold text-[#4F4634]">
-    Contact Number <span className="text-[#BA1A1A]">*</span>
-  </label>
-  <div className="flex">
-    {/* Country Code Select - Searchable Dropdown */}
-    <div className="relative" ref={countryDropdownRef}>
-      <div 
-        className="h-[48.39px] px-3 pr-8 bg-[#F6F3F2]/40 border border-r-0 border-[#D3C5AE]/40 rounded-l-lg text-sm text-[#1C1B1B] flex items-center cursor-pointer min-w-[120px]"
-        onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-      >
-        <span className="truncate">
-          {formData.countryCode ? `${countryCodes.find(c => c.code === formData.countryCode)?.flag || '🌍'} ${formData.countryCode}` : '🌍 Select'}
-        </span>
-        <svg className="w-3 h-3 text-[#6B7280] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </div>
 
-      {isCountryDropdownOpen && (
-        <div className="absolute z-50 top-full left-0 mt-1 w-[280px] bg-white border border-[#D3C5AE]/40 rounded-lg shadow-lg max-h-[300px] overflow-hidden">
-          <div className="p-2 border-b border-[#D3C5AE]/20">
-            <input
-              type="text"
-              placeholder="Search country..."
-              value={searchCountry}
-              onChange={(e) => setSearchCountry(e.target.value)}
-              className="w-full px-3 py-2 border border-[#D3C5AE]/30 rounded-lg text-sm focus:outline-none focus:border-[#FFC80B]"
-              autoFocus
-            />
-          </div>
-          <div className="overflow-y-auto max-h-[250px]">
-            {filteredCountries.length > 0 ? (
-              filteredCountries.map((country) => (
-                <div
-                  key={country.code}
-                  onClick={() => {
-                    setFormData(prev => ({ ...prev, countryCode: country.code, contactNumber: '' }));
-                    setIsCountryDropdownOpen(false);
-                    setSearchCountry('');
-                    setPhoneError('');
-                  }}
-                  className={`flex items-center gap-2 px-4 py-2.5 hover:bg-[#F6F3F2] cursor-pointer transition-colors ${
-                    formData.countryCode === country.code ? 'bg-[#FFC80B]/10' : ''
-                  }`}
-                >
-                  <span className="text-lg">{country.flag}</span>
-                  <span className="text-sm font-medium text-[#1C1B1B]">{country.code}</span>
-                  <span className="text-sm text-[#6B7280]">{country.country}</span>
-                  <span className="text-xs text-[#9CA3AF] ml-auto">ex: {country.example}</span>
-                </div>
-              ))
-            ) : (
-              <div className="px-4 py-3 text-sm text-[#6B7280]">No countries found</div>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-    {/* Phone Number Input */}
-    <div className="flex-1">
-      <motion.input
-        type="tel"
-        name="contactNumber"
-        value={formData.contactNumber}
-        onChange={handleInputChange}
-        placeholder="Enter your contact number"
-        className={`w-full px-4 py-3.5 bg-[#F6F3F2]/20 border border-[#D3C5AE]/40 rounded-r-lg text-sm text-[#6B7280] focus:outline-none transition-colors ${
-          phoneError ? 'border-red-500 focus:border-red-500' : 'focus:border-[#FFC80B]'
-        }`}
-        required
-        whileFocus={{ scale: 1.01 }}
-      />
-      {phoneError && (
-        <p className="text-xs text-red-500 mt-1">{phoneError}</p>
-      )}
-      {formData.contactNumber && !phoneError && formData.contactNumber.length >= 4 && (
-        <p className="text-xs text-green-500 mt-1">✓ Valid phone number</p>
-      )}
-    </div>
-  </div>
-</div>
+                      {/* Contact Number with Country Code - Searchable Dropdown with Validation */}
+                      <div className="space-y-2">
+                        <label className="flex items-center gap-1 text-sm font-semibold text-[#4F4634]">
+                          Contact Number <span className="text-[#BA1A1A]">*</span>
+                        </label>
+                        <div className="flex">
+                          {/* Country Code Select - Searchable Dropdown */}
+                          <div className="relative" ref={countryDropdownRef}>
+                            <div
+                              className="h-[48.39px] px-3 pr-8 bg-[#F6F3F2]/40 border border-r-0 border-[#D3C5AE]/40 rounded-l-lg text-sm text-[#1C1B1B] flex items-center cursor-pointer min-w-[120px]"
+                              onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                            >
+                              <span className="truncate">
+                                {formData.countryCode ? `${countryCodes.find(c => c.code === formData.countryCode)?.flag || '🌍'} ${formData.countryCode}` : '🌍 Select'}
+                              </span>
+                              <svg className="w-3 h-3 text-[#6B7280] absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </div>
+
+                            {isCountryDropdownOpen && (
+                              <div className="absolute z-50 top-full left-0 mt-1 w-[280px] bg-white border border-[#D3C5AE]/40 rounded-lg shadow-lg max-h-[300px] overflow-hidden">
+                                <div className="p-2 border-b border-[#D3C5AE]/20">
+                                  <input
+                                    type="text"
+                                    placeholder="Search country..."
+                                    value={searchCountry}
+                                    onChange={(e) => setSearchCountry(e.target.value)}
+                                    className="w-full px-3 py-2 border border-[#D3C5AE]/30 rounded-lg text-sm focus:outline-none focus:border-[#FFC80B]"
+                                    autoFocus
+                                  />
+                                </div>
+                                <div className="overflow-y-auto max-h-[250px]">
+                                  {filteredCountries.length > 0 ? (
+                                    filteredCountries.map((country) => (
+                                      <div
+                                        key={country.code}
+                                        onClick={() => {
+                                          setFormData(prev => ({ ...prev, countryCode: country.code, contactNumber: '' }));
+                                          setIsCountryDropdownOpen(false);
+                                          setSearchCountry('');
+                                          setPhoneError('');
+                                        }}
+                                        className={`flex items-center gap-2 px-4 py-2.5 hover:bg-[#F6F3F2] cursor-pointer transition-colors ${formData.countryCode === country.code ? 'bg-[#FFC80B]/10' : ''
+                                          }`}
+                                      >
+                                        <span className="text-lg">{country.flag}</span>
+                                        <span className="text-sm font-medium text-[#1C1B1B]">{country.code}</span>
+                                        <span className="text-sm text-[#6B7280]">{country.country}</span>
+                                        <span className="text-xs text-[#9CA3AF] ml-auto">ex: {country.example}</span>
+                                      </div>
+                                    ))
+                                  ) : (
+                                    <div className="px-4 py-3 text-sm text-[#6B7280]">No countries found</div>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                          {/* Phone Number Input */}
+                          <div className="flex-1">
+                            <motion.input
+                              type="tel"
+                              name="contactNumber"
+                              value={formData.contactNumber}
+                              onChange={handleInputChange}
+                              placeholder="Enter your contact number"
+                              className={`w-full px-4 py-3.5 bg-[#F6F3F2]/20 border border-[#D3C5AE]/40 rounded-r-lg text-sm text-[#6B7280] focus:outline-none transition-colors ${phoneError ? 'border-red-500 focus:border-red-500' : 'focus:border-[#FFC80B]'
+                                }`}
+                              required
+                              whileFocus={{ scale: 1.01 }}
+                            />
+                            {phoneError && (
+                              <p className="text-xs text-red-500 mt-1">{phoneError}</p>
+                            )}
+                            {formData.contactNumber && !phoneError && formData.contactNumber.length >= 4 && (
+                              <p className="text-xs text-green-500 mt-1">✓ Valid phone number</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </motion.div>
 
                     {/* Company Website & Project Type */}
@@ -946,7 +940,7 @@ const handleSubmit = (e) => {
                       <motion.button
                         type="button"
                         onClick={handleBack}
-                        className="px-8 py-3 rounded-xl border border-[#D3C5AE]/40 text-[#4F4634] font-semibold text-sm hover:bg-gray-50 transition-colors"
+                        className="px-3 sm:px-6 py-3 rounded-xl border border-[#D3C5AE]/40 text-[#4F4634] font-semibold text-sm hover:bg-gray-50 transition-colors"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -955,11 +949,10 @@ const handleSubmit = (e) => {
                       <motion.button
                         type="submit"
                         disabled={!formData.agreeTerms}
-                        className={`flex-1 sm:flex-none px-12 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 ${
-                          formData.agreeTerms
+                        className={`flex-1 sm:flex-none px-12 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 ${formData.agreeTerms
                             ? 'bg-gradient-to-r from-[#FFC80B] to-[#E0A20B] text-white shadow-lg shadow-[#D4A017]/30 hover:shadow-xl hover:shadow-[#D4A017]/40'
                             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        }`}
+                          }`}
                         whileHover={formData.agreeTerms ? { scale: 1.03 } : {}}
                         whileTap={formData.agreeTerms ? { scale: 0.97 } : {}}
                       >
@@ -971,34 +964,34 @@ const handleSubmit = (e) => {
               </motion.div>
 
               {/* Right - Security Sidebar */}
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="lg:w-[340px] xl:w-[400px] flex-shrink-0"
               >
-                <motion.div 
+                <motion.div
                   className="bg-white rounded-[32px] border border-[#D3C5AE]/30 shadow-[0_4px_30px_rgba(0,0,0,0.03)] overflow-hidden sticky top-6 h-full"
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <div className="p-6 sm:p-8 flex flex-col h-full">
-                    <motion.div 
+                    <motion.div
                       className="w-full h-[200px] sm:h-[250px] bg-gradient-to-br from-[#FFC80B]/10 to-[#FFC80B]/5 rounded-2xl flex items-center justify-center mb-4 overflow-hidden flex-shrink-0"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <motion.img 
-                        src={SecurityImage} 
+                      <motion.img
+                        src={SecurityImage}
                         alt="Security"
                         className="w-full h-full object-cover"
-                        animate={{ 
+                        animate={{
                           y: [0, -8, 0],
                           transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                         }}
                       />
                     </motion.div>
 
-                    <motion.h4 
+                    <motion.h4
                       className="text-center text-base font-medium text-[#1C1B1B] mb-2"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -1006,7 +999,7 @@ const handleSubmit = (e) => {
                     >
                       Your data is secure
                     </motion.h4>
-                    <motion.p 
+                    <motion.p
                       className="text-center text-sm text-[#4F4634]/70 leading-relaxed max-w-[280px] mx-auto"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -1017,7 +1010,7 @@ const handleSubmit = (e) => {
 
                     <div className="border-t border-[#D3C5AE]/10 my-4"></div>
 
-                    <motion.div 
+                    <motion.div
                       className="flex items-start gap-4"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}

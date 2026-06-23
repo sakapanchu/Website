@@ -54,9 +54,9 @@ export default function AboutHero() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut", 
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
         delay: 0.6,
         type: "spring",
         stiffness: 100,
@@ -71,9 +71,9 @@ export default function AboutHero() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut", 
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
         delay: 0.4,
         type: "spring",
         stiffness: 80,
@@ -88,18 +88,15 @@ export default function AboutHero() {
         variants={containerVariants}
         initial="hidden"
         animate={controls}
-        className="relative w-full max-w-[1430px] mx-auto overflow-hidden rounded-[20px_20px_300px_300px] border-b-[20px] border-[#FACC15]"
-        style={{ 
+        className="relative w-full max-w-[1430px] mx-auto overflow-hidden rounded-[20px_20px_120px_120px] lg:rounded-[20px_20px_300px_300px] lg:border-b-[20px] border-b-0 border-[#FACC15] bg-no-repeat bg-[length:100%_135%] bg-[position:center_top] lg:bg-cover lg:bg-[position:bottom_center] bg-[#111111] lg:min-h-[779px] min-h-[580px]"
+        style={{
           backgroundImage: `url(${AboutBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          minHeight: '779px',
         }}
       >
-        
+
 
         {/* Content Wrapper */}
-        <div className="relative z-10 flex flex-col min-h-[779px] px-8 sm:px-12 lg:px-16 pt-16 sm:pt-20 lg:pt-32 pb-12">
+        <div className="relative z-10 flex flex-col lg:min-h-[779px] min-h-[580px] px-3 sm:px-6 sm:px-12 lg:px-16 pt-12 sm:pt-20 lg:pt-32 pb-8">
           {/* Left Content */}
           <motion.div
             variants={contentVariants}
@@ -163,41 +160,41 @@ export default function AboutHero() {
             Floating Stat Badge - 3+ Years Experience 
             Centered horizontally & placed lower so it overlaps the bottom part of the bg image
           */}
-         <motion.div
-  variants={statBadgeVariants}
-  className="absolute left-200 -translate-x-1/2 bottom-20 lg:bottom-60 w-[208px] bg-white/5 border border-[#FFC80B] backdrop-blur-sm rounded-2xl p-6"
->
-  <div className="w-10 h-10 bg-[#FFCC00] rounded-lg flex items-center justify-center mb-4">
-    <img 
-      src={YearExperience} 
-      alt="Year Experience Icon" 
-      className="w-8 h-8 object-contain"
-    />
-  </div>
-  <h3 className="text-[36px] font-extrabold text-[#FFCC00] leading-10 text-left">3+</h3>
-  <p className="text-white text-[14px] font-bold uppercase tracking-[0.35px] text-left">YEARS EXPERIENCE</p>
-  <p className="text-white text-[14px] font-normal leading-[15px] mt-1 text-left">Delivering digital excellence</p>
-</motion.div>
+          <motion.div
+            variants={statBadgeVariants}
+            className="absolute left-200 -translate-x-1/2 bottom-20 lg:bottom-60 w-[208px] bg-white/5 border border-[#FFC80B] backdrop-blur-sm rounded-2xl p-6"
+          >
+            <div className="w-10 h-10 bg-[#FFCC00] rounded-lg flex items-center justify-center mb-4">
+              <img
+                src={YearExperience}
+                alt="Year Experience Icon"
+                className="w-8 h-8 object-contain"
+              />
+            </div>
+            <h3 className="text-[36px] font-extrabold text-[#FFCC00] leading-10 text-left">3+</h3>
+            <p className="text-white text-[14px] font-bold uppercase tracking-[0.35px] text-left">YEARS EXPERIENCE</p>
+            <p className="text-white text-[14px] font-normal leading-[15px] mt-1 text-left">Delivering digital excellence</p>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* Mission & Vision Cards - positioned over the bottom of the bg image */}
-      <div className="max-w-[1330px] mx-auto px-6 -mt-58 relative z-20">
+      {/* Mission & Vision Cards - positioned below the hero image on mobile, and overlapping on desktop */}
+      <div className="max-w-[1330px] mx-auto px-6 lg:-mt-58 mt-8 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
           {/* Mission Card */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
             animate={controls}
-            className="bg-white rounded-2xl p-8 lg:p-10 border border-[#E5E5E5] shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-start gap-6  max-h-[220px]"
+            className="bg-white rounded-2xl p-8 lg:p-10 border border-[#E5E5E5] shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-start gap-6 lg:max-h-[220px] max-h-none"
           >
             <div className="w-16 h-16 rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/50 flex items-center justify-center flex-shrink-0">
               <div className="w-12 h-12 bg-[#FFCC00] rounded-full flex items-center justify-center">
-                <img 
-                src={MissionIcon} 
-                alt="Mission Icon" 
-                className="w-6 h-6 sm:w-6 sm:h-6 object-contain"
-              />
+                <img
+                  src={MissionIcon}
+                  alt="Mission Icon"
+                  className="w-6 h-6 sm:w-6 sm:h-6 object-contain"
+                />
               </div>
             </div>
             <div>
@@ -213,15 +210,15 @@ export default function AboutHero() {
             variants={cardVariants}
             initial="hidden"
             animate={controls}
-            className="bg-white rounded-2xl p-8 lg:p-10 border border-[#E5E5E5] shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-start gap-6 max-h-[220px]"
+            className="bg-white rounded-2xl p-8 lg:p-10 border border-[#E5E5E5] shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row items-start gap-6 lg:max-h-[220px] max-h-none"
           >
             <div className="w-16 h-16 rounded-full bg-[#FFCC00]/20 border border-[#FFCC00]/50 flex items-center justify-center flex-shrink-0">
               <div className="w-12 h-12 bg-[#FFCC00] rounded-full flex items-center justify-center">
-                <img 
-                src={VisionIcon} 
-                alt="Vision Icon" 
-                className="w-6 h-6 sm:w-6 sm:h-6 object-contain"
-              />
+                <img
+                  src={VisionIcon}
+                  alt="Vision Icon"
+                  className="w-6 h-6 sm:w-6 sm:h-6 object-contain"
+                />
               </div>
             </div>
             <div>

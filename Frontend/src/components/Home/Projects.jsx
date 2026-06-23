@@ -186,8 +186,63 @@ export default function Projects() {
           animate={controls}
           className="space-y-6"
         >
-          {/* Row 1 - First 2 projects (1 wide, 1 normal) */}
-          <div className="flex gap-6">
+          {/* Mobile Horizontal Snap Scroll View (visible on mobile only) */}
+          <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 w-full -mx-4 px-4">
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                variants={cardVariants}
+                className="relative shrink-0 w-[88vw] sm:w-[340px] snap-center cursor-pointer rounded-[32px] overflow-hidden shadow-md h-[400px]"
+                style={{ minHeight: "400px", maxHeight: "400px" }}
+                onClick={() => handleProjectClick(project.id)}
+              >
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${project.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(255, 200, 11, 0.15) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)`,
+                    }}
+                  ></div>
+                </div>
+
+                {/* Category Badge */}
+                <div className="absolute top-5 left-6 z-10">
+                  <div
+                    className="inline-block px-4 border border-[#FFC80B] bg-[rgba(255,200,11,0.20)] text-white py-[3.5px] rounded-full text-[10px] font-bold tracking-[1px] uppercase"
+                    style={{
+                      boxShadow:
+                        "0 4px 16px 0 #FBBF24, 4px 4px 25px 0 rgba(251,191,36,0.30) inset",
+                    }}
+                  >
+                    {project.category}
+                  </div>
+                </div>
+
+                {/* Project details (visible by default on mobile) */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 pb-6">
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-[24px] sm:text-[30px] leading-[28px]">
+                      {project.title}
+                    </h4>
+                    <p className="text-white font-medium text-[12px] leading-4 opacity-90">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop Row 1 - First 2 projects (1 wide, 1 normal) - Hidden on Mobile */}
+          <div className="hidden lg:flex gap-6">
             {row1Projects.map((project) => {
               const isHovered = hoveredProject === project.id;
               const isRowHovered = row1Projects.some((p) => hoveredProject === p.id);
@@ -312,8 +367,8 @@ export default function Projects() {
             })}
           </div>
 
-          {/* Row 2 - Next 3 projects (all normal) - No hiding */}
-          <div className="flex gap-6">
+          {/* Desktop Row 2 - Next 3 projects (all normal) - Hidden on Mobile */}
+          <div className="hidden lg:flex gap-6">
             {row2Projects.map((project) => {
               const isHovered = hoveredProject === project.id;
               const isRowHovered = row2Projects.some((p) => hoveredProject === p.id);

@@ -84,7 +84,7 @@ export default function Process() {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-16 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -93,18 +93,18 @@ export default function Process() {
           animate={controls}
           className="text-center mb-12"
         >
-            <div className="flex items-center justify-center gap-4 mb-2">
+          <div className="flex items-center justify-center gap-4 mb-2">
             <div className="w-[20px] h-[3px] bg-[#FFC80B]"></div>
-             <div className="w-[20px] h-[3px] bg-[#FFC80B]"></div>
+            <div className="w-[20px] h-[3px] bg-[#FFC80B]"></div>
             <span className="text-[18px] font-bold tracking-[1.4px] uppercase text-black">
               OUR PROCESS
             </span>
             <div className="w-[20px] h-[3px] bg-[#FFC80B]"></div>
-             <div className="w-[20px] h-[3px] bg-[#FFC80B]"></div>
+            <div className="w-[20px] h-[3px] bg-[#FFC80B]"></div>
           </div>
           {/* Main Title */}
           <h2 className="text-[35px] font-bold leading-[48px] text-black">
-           How We Work
+            How We Work
           </h2>
         </motion.div>
 
@@ -132,13 +132,12 @@ export default function Process() {
               >
                 {/* Icon Circle */}
                 <div
-                  className={`relative w-24 h-24 rounded-full border-4 border-white flex items-center justify-center transition-all duration-500 ${
-                    isHovered 
+                  className={`relative w-24 h-24 rounded-full border-4 border-white flex items-center justify-center transition-all duration-500 ${isHovered
                       ? 'bg-[#FFC107] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)]'
                       : 'bg-black'
-                  }`}
+                    }`}
                   style={{
-                    boxShadow: isHovered 
+                    boxShadow: isHovered
                       ? '0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1)'
                       : 'none'
                   }}
@@ -146,23 +145,20 @@ export default function Process() {
                   <img
                     src={step.icon}
                     alt={step.alt}
-                    className={`w-8 h-8 object-contain transition-all duration-500 ${
-                      isHovered ? 'brightness-0' : 'text-[#FBBF24] '
-                    }`}
+                    className={`w-8 h-8 object-contain transition-all duration-500 ${isHovered ? 'brightness-0' : 'text-[#FBBF24] '
+                      }`}
                   />
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-[16px] font-bold mt-3 transition-all duration-500 ${
-                  isHovered ? 'text-black' : 'text-black'
-                }`}>
+                <h3 className={`text-[16px] font-bold mt-3 transition-all duration-500 ${isHovered ? 'text-black' : 'text-black'
+                  }`}>
                   {step.number}. {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className={`text-[14px] leading-5 px-4 mt-1 transition-all duration-500 ${
-                  isHovered ? 'text-black' : 'text-black/70'
-                }`}>
+                <p className={`text-[14px] leading-5 px-4 mt-1 transition-all duration-500 ${isHovered ? 'text-black' : 'text-black/70'
+                  }`}>
                   {step.description}
                 </p>
               </motion.div>

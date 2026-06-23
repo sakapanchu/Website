@@ -25,12 +25,12 @@ export default function ServiceHero({ service }) {
   };
 
   return (
-    <section 
+    <section
       className="relative mt-34 bg-cover bg-center min-h-[779px] flex items-center w-full max-w-[1430px] mx-auto overflow-hidden rounded-[20px_20px_60px_60px] md:rounded-[20px_20px_90px_90px]"
       style={{ backgroundImage: `url(${service.heroImage})` }}
     >
       <div className="absolute inset-0 bg-black/40"></div>
-      
+
       <div className="relative z-10  mx-auto px-16 py-20 w-full">
         <motion.div
           variants={containerVariants}
@@ -55,15 +55,15 @@ export default function ServiceHero({ service }) {
 
           {/* Buttons */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-            <button 
+            <button
               onClick={() => navigate('/contact')}
-              className="flex items-center gap-2 px-8 py-3 bg-[#FFC80B]/20 border border-[#FFC80B] text-white font-bold rounded-full hover:bg-[#FFC80B]/30 transition-colors"
+              className="flex items-center gap-2 px-3 sm:px-6 py-3 bg-[#FFC80B]/20 border border-[#FFC80B] text-white font-bold rounded-full hover:bg-[#FFC80B]/30 transition-colors"
             >
               {service.buttonText} →
             </button>
-            <button 
+            <button
               onClick={() => navigate('/contact')}
-              className="flex items-center gap-2 px-8 py-3 bg-white/10 border border-white/20 text-white font-bold rounded-full hover:bg-white/20 transition-colors"
+              className="flex items-center gap-2 px-3 sm:px-6 py-3 bg-white/10 border border-white/20 text-white font-bold rounded-full hover:bg-white/20 transition-colors"
             >
               {service.buttonSecondaryText}
             </button>

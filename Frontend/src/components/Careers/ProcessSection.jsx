@@ -79,15 +79,15 @@ export default function ProcessSection() {
 
   const stepVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.5, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* White Container */}
         <div className="bg-white rounded-[30px] py-12 px-6 md:px-10">
@@ -137,7 +137,7 @@ export default function ProcessSection() {
                   <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-black text-[#FFC80B] text-xs font-bold flex items-center justify-center border-2 border-white">
                     {step.number}
                   </div>
-                  
+
                   {/* Main Circle Icon */}
                   <div className="w-20 h-20 rounded-full bg-white border-2 border-[#FFC80B] text-[#7B5901] flex items-center justify-center group-hover:border-[#FFC80B] group-hover:bg-[#FFC80B] group-hover:text-black transition-all duration-300 shadow-md">
                     {step.icon}

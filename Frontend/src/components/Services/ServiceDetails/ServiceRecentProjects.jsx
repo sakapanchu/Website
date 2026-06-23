@@ -25,7 +25,7 @@ export default function ServiceRecentProjects({ service }) {
   };
 
   return (
-    <section className="bg-white rounded-3xl max-w-[1430px] mx-auto py-12 px-8 my-8">
+    <section className="bg-white rounded-3xl max-w-[1430px] mx-auto py-12 px-3 sm:px-6 my-8">
       <div className="max-w-[1430px] mx-auto">
         {/* Header */}
         <motion.div
@@ -57,19 +57,19 @@ export default function ServiceRecentProjects({ service }) {
             >
               {/* Image - Left Side */}
               <div className="md:w-[40%] h-[200px] md:h-auto">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Content - Right Side */}
               <div className="md:w-[60%] p-4 md:p-6 flex flex-col justify-center">
                 <h4 className="text-lg md:text-xl font-bold text-[#1A1A1A] mb-1">{project.title}</h4>
                 <p className="text-xs font-bold text-[#FACC15] uppercase tracking-wide mb-2">{project.category}</p>
                 <p className="text-sm text-[#6B7280] mb-3 leading-relaxed line-clamp-3">{project.description}</p>
-                <button 
+                <button
                   onClick={() => navigate(`/projects/${project.title.toLowerCase().replace(/ /g, '-')}`)}
                   className="font-bold text-sm text-black hover:text-[#FACC15] transition-colors flex items-center gap-2 self-start"
                 >

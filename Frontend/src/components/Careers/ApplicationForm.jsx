@@ -114,8 +114,8 @@ export default function ApplicationForm() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: "easeOut",
         type: "spring",
         stiffness: 100,
@@ -150,8 +150,8 @@ export default function ApplicationForm() {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: { 
-        duration: 0.4, 
+      transition: {
+        duration: 0.4,
         ease: "easeOut",
         type: "spring",
         stiffness: 120,
@@ -199,7 +199,7 @@ export default function ApplicationForm() {
     <div className="min-h-screen bg-[#F1F1F1] font-inter">
       {/* Hero Section */}
       <div className="pt-34 max-w-[1430px] mx-auto">
-        <motion.section 
+        <motion.section
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -218,7 +218,7 @@ export default function ApplicationForm() {
             <span className="hero-ring-motion hero-ring-motion--three" />
           </div>
           <div className="relative z-10 flex flex-col min-h-[420px] md:min-h-[500px] lg:min-h-[779px]">
-            <div className="flex-1 px-8 sm:px-12 lg:px-16 pt-16 sm:pt-20 lg:pt-32 pb-6">
+            <div className="flex-1 px-3 sm:px-6 lg:px-16 pt-16 sm:pt-20 lg:pt-32 pb-6">
               <motion.div
                 variants={contentVariants}
                 initial="hidden"
@@ -254,7 +254,7 @@ export default function ApplicationForm() {
                         formElement.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className="group flex items-center gap-2 px-8 py-3 rounded-full border border-[#FFC80B] bg-[#FFC80B]/20 text-white font-bold text-base leading-6 transition-all duration-300 hover:bg-[#FFC80B]/30 hover:scale-[1.02]"
+                    className="group flex items-center gap-2 px-3 sm:px-6 py-3 rounded-full border border-[#FFC80B] bg-[#FFC80B]/20 text-white font-bold text-base leading-6 transition-all duration-300 hover:bg-[#FFC80B]/30 hover:scale-[1.02]"
                   >
                     Apply Now
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300 group-hover:translate-x-1">
@@ -277,7 +277,7 @@ export default function ApplicationForm() {
         id="apply-form-section"
         className="py-12 px-4 sm:px-6 lg:px-8 max-w-[1430px] mx-auto"
       >
-        <motion.div 
+        <motion.div
           variants={formItemVariants}
           className="bg-white rounded-[24px] p-8 sm:p-12 max-w-[1430px] mx-auto "
         >
@@ -452,9 +452,9 @@ export default function ApplicationForm() {
                   onClick={() => resumeInputRef.current?.click()}
                   className="border-2 border-dashed border-[#FFD700] bg-[#FEFCE8]/20 rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:bg-[#FEFCE8]/40"
                 >
-                  <motion.img 
-                    src={UploadIcon} 
-                    alt="Upload Resume" 
+                  <motion.img
+                    src={UploadIcon}
+                    alt="Upload Resume"
                     className="w-10 h-10 mb-4 object-contain"
                     style={{ filter: 'brightness(0) saturate(100%) invert(77%) sepia(79%) saturate(749%) hue-rotate(2deg) brightness(102%) contrast(103%)' }}
                     whileHover={{ scale: 1.1, rotate: 5 }}
@@ -476,7 +476,7 @@ export default function ApplicationForm() {
                     onChange={(e) => setResume(e.target.files?.[0] || null)}
                   />
                   {resume && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       className="mt-3 text-xs text-[#000] font-bold bg-[#FFD700]/20 px-3 py-1 rounded-full"
@@ -493,9 +493,9 @@ export default function ApplicationForm() {
                   onClick={() => coverLetterInputRef.current?.click()}
                   className="border-2 border-dashed border-[#E5E7EB] rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:bg-gray-50"
                 >
-                  <motion.img 
-                    src={UploadIcon} 
-                    alt="Upload Resume" 
+                  <motion.img
+                    src={UploadIcon}
+                    alt="Upload Resume"
                     className="w-10 h-10 mb-4 object-contain opacity-60"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
@@ -516,7 +516,7 @@ export default function ApplicationForm() {
                     onChange={(e) => setCoverLetter(e.target.files?.[0] || null)}
                   />
                   {coverLetter && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       className="mt-3 text-xs text-[#374151] font-bold bg-gray-100 px-3 py-1 rounded-full"

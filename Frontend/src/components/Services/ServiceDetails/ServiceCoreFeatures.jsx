@@ -23,7 +23,7 @@ export default function ServiceCoreFeatures({ service }) {
   };
 
   return (
-    <section className="bg-white rounded-3xl max-w-[1430px] mx-auto py-12 px-8 my-8">
+    <section className="bg-white rounded-3xl max-w-[1430px] mx-auto py-12 px-3 sm:px-6 my-8">
       <div className="max-w-[1430px] mx-auto">
         {/* Header */}
         <motion.div
@@ -56,8 +56,8 @@ export default function ServiceCoreFeatures({ service }) {
               className="flex items-center gap-4 p-4 border border-[#FBBF24] rounded-[60px] hover:shadow-md transition-shadow"
             >
               <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center flex-shrink-0">
-                <img 
-                  src={feature.icon} 
+                <img
+                  src={feature.icon}
                   alt={feature.title}
                   className="w-8 h-8 object-contain"
                 />

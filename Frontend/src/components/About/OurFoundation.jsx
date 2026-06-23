@@ -37,8 +37,8 @@ export default function OurFoundation() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: "easeOut",
         type: "spring",
         stiffness: 80,
@@ -69,7 +69,7 @@ export default function OurFoundation() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -97,8 +97,8 @@ export default function OurFoundation() {
               >
                 {/* Icon Container - Changes to yellow on hover */}
                 <div className="w-14 h-14 bg-[#000000] rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-[#FFC80B] group-hover:scale-110 group-hover:rotate-6">
-                  <img 
-                    src={item.icon} 
+                  <img
+                    src={item.icon}
                     alt={`${item.title} icon`}
                     className="w-8 h-8 object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert"
                   />

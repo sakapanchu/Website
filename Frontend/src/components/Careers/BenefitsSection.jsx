@@ -63,16 +63,16 @@ export default function BenefitsSection() {
 
   const cardVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      y: 0, 
-      transition: { duration: 0.5, ease: "easeOut" } 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* White Container */}
         <div className="bg-white rounded-[30px] py-12 px-6 md:px-10">
@@ -114,17 +114,17 @@ export default function BenefitsSection() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover={{ 
+                whileHover={{
                   y: -5,
                   borderColor: '#FBBF24',
-                  boxShadow: '0 20px 40px rgba(255, 200, 11, 0.08)' 
+                  boxShadow: '0 20px 40px rgba(255, 200, 11, 0.08)'
                 }}
                 className="bg-[rgba(251,191,36,0.05)] rounded-2xl p-6 border border-[#FBBF24] transition-all duration-300 flex flex-col items-center text-center"
               >
                 {/* Icon Container */}
                 <div className="w-16 h-16 rounded-2xl bg-[#FFC80B] flex items-center justify-center flex-shrink-0 mb-4">
-                  <img 
-                    src={benefit.icon} 
+                  <img
+                    src={benefit.icon}
                     alt={benefit.alt}
                     className="w-8 h-8 object-contain"
                   />

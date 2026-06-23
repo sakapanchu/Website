@@ -24,7 +24,7 @@ export default function ProjectsShowcase() {
   // Individual card visibility observer
   useEffect(() => {
     const observers = [];
-    
+
     projects.forEach((_, index) => {
       const cardElement = document.getElementById(`card-${index}`);
       if (cardElement) {
@@ -34,29 +34,29 @@ export default function ProjectsShowcase() {
               if (entry.isIntersecting) {
                 setCardStates(prev => ({
                   ...prev,
-                  [index]: { 
+                  [index]: {
                     card: true,
                     content: false,
-                    image: false 
+                    image: false
                   }
                 }));
-                
+
                 setTimeout(() => {
                   setCardStates(prev => ({
                     ...prev,
-                    [index]: { 
+                    [index]: {
                       ...prev[index],
-                      content: true 
+                      content: true
                     }
                   }));
                 }, 400);
-                
+
                 setTimeout(() => {
                   setCardStates(prev => ({
                     ...prev,
-                    [index]: { 
+                    [index]: {
                       ...prev[index],
-                      image: true 
+                      image: true
                     }
                   }));
                 }, 800);
@@ -65,7 +65,7 @@ export default function ProjectsShowcase() {
           },
           { threshold: 0.2 }
         );
-        
+
         observer.observe(cardElement);
         observers.push(observer);
       }
@@ -94,8 +94,8 @@ export default function ProjectsShowcase() {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         ease: [0.34, 1.56, 0.64, 1],
         type: "spring",
         stiffness: 70,
@@ -110,8 +110,8 @@ export default function ProjectsShowcase() {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: { 
-        duration: 0.7, 
+      transition: {
+        duration: 0.7,
         ease: [0.34, 1.56, 0.64, 1],
         type: "spring",
         stiffness: 80,
@@ -127,8 +127,8 @@ export default function ProjectsShowcase() {
       x: 0,
       scale: 1,
       rotate: 0,
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         ease: [0.34, 1.56, 0.64, 1],
         type: "spring",
         stiffness: 60,
@@ -212,7 +212,7 @@ export default function ProjectsShowcase() {
   // Arrow icon component
   const ArrowIcon = ({ color = "#000000" }) => (
     <svg className="w-3 h-3" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 3.168H10.592C10.208 3.632 9.6 4.832 9.6 5.12C9.6 5.264 9.728 5.376 9.888 5.376C10.016 5.376 10.064 5.328 10.304 5.056C10.944 4.304 11.648 3.76 12.816 3.104C13.136 2.928 13.248 2.832 13.248 2.72C13.248 2.592 13.184 2.512 13.056 2.432C11.44 1.488 11.008 1.136 10.192 0.176C10.064 0.032 10 0 9.888 0C9.728 0 9.6 0.112 9.6 0.256C9.6 0.352 9.792 0.88 9.92 1.136C10.096 1.504 10.288 1.792 10.592 2.208H0V3.168Z" fill={color}/>
+      <path d="M0 3.168H10.592C10.208 3.632 9.6 4.832 9.6 5.12C9.6 5.264 9.728 5.376 9.888 5.376C10.016 5.376 10.064 5.328 10.304 5.056C10.944 4.304 11.648 3.76 12.816 3.104C13.136 2.928 13.248 2.832 13.248 2.72C13.248 2.592 13.184 2.512 13.056 2.432C11.44 1.488 11.008 1.136 10.192 0.176C10.064 0.032 10 0 9.888 0C9.728 0 9.6 0.112 9.6 0.256C9.6 0.352 9.792 0.88 9.92 1.136C10.096 1.504 10.288 1.792 10.592 2.208H0V3.168Z" fill={color} />
     </svg>
   );
 
@@ -230,7 +230,7 @@ export default function ProjectsShowcase() {
   );
 
   return (
-    <section ref={sectionRef} id="projects-section" className="w-full py-10 px-4 sm:px-6 lg:px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} id="projects-section" className="w-full py-10 px-3 sm:px-6 lg:px-8 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -238,7 +238,7 @@ export default function ProjectsShowcase() {
         className="max-w-[1440px] mx-auto"
       >
         {/* Filter Tabs */}
-        <motion.div 
+        <motion.div
           variants={cardVariants}
           className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 lg:mb-12"
         >
@@ -246,11 +246,10 @@ export default function ProjectsShowcase() {
             <button
               key={tab.id}
               onClick={() => setActiveFilter(tab.label)}
-              className={`px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
-                activeFilter === tab.label
+              className={`px-5 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${activeFilter === tab.label
                   ? 'bg-[#FFB800]/20 border border-[#FFC80B] shadow-[5px_5px_9px_rgba(255,200,11,0.2)] text-black'
                   : 'bg-white/5 border border-white/10 text-[#060606] hover:bg-white/10'
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -261,7 +260,7 @@ export default function ProjectsShowcase() {
         <div className="space-y-8 lg:space-y-12">
           {projects.map((project, index) => {
             const state = cardStates[index] || { card: false, content: false, image: false };
-            
+
             // Determine border position based on cover style
             const getBorderStyle = () => {
               if (project.borderPosition === 'right') {
@@ -288,32 +287,30 @@ export default function ProjectsShowcase() {
                 initial="hidden"
                 animate={state.card ? "visible" : "hidden"}
                 className={`relative overflow-hidden border ${project.cardStyle}`}
-                style={{ 
+                style={{
                   borderColor: project.borderColor,
                   background: project.bgGradient,
                 }}
               >
                 <div className="flex flex-col lg:flex-row items-stretch">
                   {/* Content - Left Side */}
-                  <motion.div 
+                  <motion.div
                     variants={contentVariants}
                     initial="hidden"
                     animate={state.content ? "visible" : "hidden"}
-                    className={`w-full lg:w-1/2 p-6 sm:p-8 lg:p-10 ${
-                      project.imagePosition === 'left' ? 'lg:order-2' : 'lg:order-1'
-                    }`}
+                    className={`w-full lg:w-1/2 p-6 sm:p-8 lg:p-10 ${project.imagePosition === 'left' ? 'lg:order-2' : 'lg:order-1'
+                      }`}
                   >
                     <div className="relative max-w-[600px]">
-                     
-                      
-                      <div 
-                        className={`bg-white shadow-[0_4px_4px_rgba(156,163,175,0.25)] ${project.coverStyle} p-6 sm:p-8 lg:p-10 ${
-                          project.borderPosition === 'right' ? 'mr-4' : 'ml-4'
-                        }`}
+
+
+                      <div
+                        className={`bg-white shadow-[0_4px_4px_rgba(156,163,175,0.25)] ${project.coverStyle} p-6 sm:p-8 lg:p-10 ${project.borderPosition === 'right' ? 'mr-4' : 'ml-4'
+                          }`}
                         style={getBorderStyle()}
                       >
                         {/* Tag */}
-                        <div 
+                        <div
                           className="inline-block px-3 py-1 rounded-md text-white text-[10px] font-bold tracking-[1px] uppercase mb-4"
                           style={{ backgroundColor: project.tagBg }}
                         >
@@ -331,11 +328,11 @@ export default function ProjectsShowcase() {
                         </p>
 
                         {/* Button */}
-                        <button 
+                        <button
                           className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border transition-all duration-300 hover:scale-105 group"
                           style={{ borderColor: project.buttonColor === "#000000" ? "#FFB800" : project.buttonColor }}
                         >
-                          <span 
+                          <span
                             className="text-sm sm:text-base font-semibold"
                             style={{ color: project.buttonColor }}
                           >
@@ -357,16 +354,15 @@ export default function ProjectsShowcase() {
                   </motion.div>
 
                   {/* Image - Right Side */}
-                  <motion.div 
+                  <motion.div
                     variants={imageVariants}
                     initial="hidden"
                     animate={state.image ? "visible" : "hidden"}
-                    className={`w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-8 ${
-                      project.imagePosition === 'left' ? 'lg:order-1' : 'lg:order-2'
-                    }`}
+                    className={`w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-8 ${project.imagePosition === 'left' ? 'lg:order-1' : 'lg:order-2'
+                      }`}
                   >
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.title}
                       className="w-full max-w-[624px] h-auto object-contain rounded-2xl"
                     />

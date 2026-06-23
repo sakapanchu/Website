@@ -63,18 +63,18 @@ export default function WhyChooseUs() {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* White Background Container */}
-        <div className="bg-white rounded-[30px] py-10 px-8">
+        <div className="bg-white rounded-[30px] py-10 px-3 sm:px-6">
           {/* Header */}
           <motion.div
             variants={headerVariants}
@@ -113,17 +113,17 @@ export default function WhyChooseUs() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover={{ 
-                  y: -8, 
-                  borderColor: '#FFCD29', 
-                  boxShadow: '0 20px 40px rgba(255, 200, 11, 0.12)' 
+                whileHover={{
+                  y: -8,
+                  borderColor: '#FFCD29',
+                  boxShadow: '0 20px 40px rgba(255, 200, 11, 0.12)'
                 }}
                 className="bg-white rounded-2xl p-8 border border-[#FFCD29] transition-all duration-300 flex flex-col items-center text-center h-[285px]"
               >
                 {/* Icon Container */}
                 <div className="w-16 h-16 rounded-2xl bg-[#FFC80B] flex items-center justify-center flex-shrink-0 mb-4">
-                  <img 
-                    src={card.icon} 
+                  <img
+                    src={card.icon}
                     alt={card.alt}
                     className="w-8 h-8 object-contain"
                   />

@@ -37,33 +37,33 @@ export default function ContactHero() {
   };
 
   return (
-    <section ref={sectionRef} className="py-10 mt-24 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 mt-24 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={controls}
         className="max-w-[1430px] mx-auto"
       >
-        <div 
+        <div
           className="relative w-full rounded-[20px_20px_90px_90px] overflow-hidden"
-            style={{ "--hero-bg": `url(${ContactBg})` }}
-                >
-                  {/* Background image */}
-                  <img
-                    src={ContactBg}
-                    alt="Faite Contact background"
-                    className="absolute inset-0 h-full w-full object-cover object-center"
-                  />
-          
-                
-          
-                  {/* Animated ring layers */}
-                  <div className="hero-orbit-layer" aria-hidden="true">
-                    <span className="hero-ring-motion hero-ring-motion--one" />
-                    <span className="hero-ring-motion hero-ring-motion--two" />
-                    <span className="hero-ring-motion hero-ring-motion--three" />
-                  </div>
-          
+          style={{ "--hero-bg": `url(${ContactBg})` }}
+        >
+          {/* Background image */}
+          <img
+            src={ContactBg}
+            alt="Faite Contact background"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+
+
+
+          {/* Animated ring layers */}
+          <div className="hero-orbit-layer" aria-hidden="true">
+            <span className="hero-ring-motion hero-ring-motion--one" />
+            <span className="hero-ring-motion hero-ring-motion--two" />
+            <span className="hero-ring-motion hero-ring-motion--three" />
+          </div>
+
 
           {/* Content */}
           <div className="relative z-10 flex flex-col justify-center min-h-[779px] px-6 sm:px-10 lg:px-16 py-10 bottom-20">

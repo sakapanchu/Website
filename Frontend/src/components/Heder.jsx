@@ -52,7 +52,10 @@ export default function Header() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-10 xl:gap-12 mx-auto">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.href;
+            const isActive =
+              location.pathname === link.href ||
+              (link.hasDropdown &&
+                link.dropdownItems.some((item) => location.pathname === item.href));
 
             return (
               <div key={link.label} className="relative group">

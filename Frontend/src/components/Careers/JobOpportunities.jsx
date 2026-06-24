@@ -65,8 +65,8 @@ export default function JobOpportunities() {
     }
   ];
 
-  const filteredJobs = activeTab === "All" 
-    ? jobs 
+  const filteredJobs = activeTab === "All"
+    ? jobs
     : jobs.filter(job => job.category === activeTab);
 
   const headerVariants = {
@@ -87,15 +87,15 @@ export default function JobOpportunities() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.4, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" }
     }
   };
 
   return (
-    <section id="jobs-section" ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section id="jobs-section" ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* White Container */}
         <div className="bg-white rounded-[30px] py-10 px-6 md:px-10">
@@ -120,11 +120,10 @@ export default function JobOpportunities() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-5 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
-                  activeTab === tab
+                className={`px-5 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${activeTab === tab
                     ? "bg-[#FFC80B] text-black border border-[#FFC80B] shadow-[0_4px_5px_rgba(255,200,11,0.2)]"
                     : "bg-white text-black border border-[#FFC80B] shadow-[0_4px_5px_rgba(255,200,11,0.2)] hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 {tab}
               </button>
@@ -154,8 +153,8 @@ export default function JobOpportunities() {
                   <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto flex-1">
                     {/* Icon Container */}
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center flex-shrink-0">
-                      <img 
-                        src={job.icon} 
+                      <img
+                        src={job.icon}
                         alt={job.alt}
                         className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                       />

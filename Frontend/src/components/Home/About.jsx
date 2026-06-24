@@ -27,30 +27,30 @@ export default function AboutUs() {
   }, [isInView, controls]);
 
   const stats = [
-    { 
-      id: 1, 
-      value: "05+", 
+    {
+      id: 1,
+      value: "05+",
       label: "YEARS EXPERIENCE",
       icon: ExperienceIcon,
       alt: "Years Experience Icon"
     },
-    { 
-      id: 2, 
-      value: "100+", 
+    {
+      id: 2,
+      value: "100+",
       label: "PROJECTS COMPLETED",
       icon: ProjectsIcon,
       alt: "Projects Completed Icon"
     },
-    { 
-      id: 3, 
-      value: "20+", 
+    {
+      id: 3,
+      value: "20+",
       label: "EXPERT PROFESSIONALS",
       icon: ProfessionalsIcon,
       alt: "Expert Professionals Icon"
     },
-    { 
-      id: 4, 
-      value: "95%", 
+    {
+      id: 4,
+      value: "95%",
       label: "CLIENT SATISFACTION",
       icon: SatisfactionIcon,
       alt: "Client Satisfaction Icon"
@@ -113,9 +113,9 @@ export default function AboutUs() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { 
-        duration: 0.8, 
-        ease: "easeOut", 
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
         delay: 0.8,
         staggerChildren: 0.3,
         when: "beforeChildren"
@@ -124,8 +124,8 @@ export default function AboutUs() {
   };
 
   const imageVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
       rotateY: 30,
     },
@@ -133,8 +133,8 @@ export default function AboutUs() {
       opacity: 1,
       scale: 1,
       rotateY: 0,
-      transition: { 
-        duration: 0.7, 
+      transition: {
+        duration: 0.7,
         ease: "easeOut",
         type: "spring",
         stiffness: 100,
@@ -169,9 +169,9 @@ export default function AboutUs() {
             <div className="w-[42.57px] h-[3px] bg-[#FFC80B]"></div>
           </div>
 
-           {/* Main Title */}
+          {/* Main Title */}
           <h2 className="text-[35px] font-bold leading-[48px] text-black">
-            We build  <span className="text-[#FFC80B]"> smart solutions </span> that drive real impact. 
+            We build  <span className="text-[#FFC80B]"> smart solutions </span> that drive real impact.
           </h2>
         </motion.div>
 
@@ -204,8 +204,8 @@ export default function AboutUs() {
                   className="bg-[#191C1E] border border-[#D4C5AB] rounded-2xl p-6"
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <img 
-                      src={stat.icon} 
+                    <img
+                      src={stat.icon}
                       alt={stat.alt}
                       className="w-5 h-5 object-contain"
                     />
@@ -226,7 +226,7 @@ export default function AboutUs() {
               initial="hidden"
               animate={controls}
               onClick={handleLearnMore}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-[#FACC15] text-black font-bold text-[16px] rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FACC15]/30"
+              className="inline-flex items-center gap-2 px-3 sm:px-6 py-3 bg-[#FACC15] text-black font-bold text-[16px] rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FACC15]/30"
             >
               Learn More About Us →
             </motion.button>
@@ -246,19 +246,19 @@ export default function AboutUs() {
               custom={imageHoverVariants}
               className="flex-1"
             >
-              <div 
-               className="relative h-[280px] sm:h-[400px] mt-10 rounded-2xl overflow-hidden"
-                
+              <div
+                className="relative h-[280px] sm:h-[400px] mt-10 rounded-2xl overflow-hidden"
+
               >
-                <div 
+                <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ 
+                  style={{
                     backgroundImage: `url(${TeamImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}
                 >
-                 
+
                 </div>
               </div>
             </motion.div>
@@ -270,19 +270,19 @@ export default function AboutUs() {
               custom={imageHoverVariants}
               className="flex-1"
             >
-              <div 
+              <div
                 className="relative h-[280px] sm:h-[400px] rounded-2xl overflow-hidden"
-               
+
               >
-                <div 
+                <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ 
+                  style={{
                     backgroundImage: `url(${OfficeImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}
                 >
-                  
+
                 </div>
               </div>
             </motion.div>

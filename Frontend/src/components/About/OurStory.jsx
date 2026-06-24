@@ -35,9 +35,9 @@ export default function OurStory() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut", 
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
         delay: 0.2,
         type: "spring",
         stiffness: 80,
@@ -77,7 +77,7 @@ export default function OurStory() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -116,8 +116,8 @@ export default function OurStory() {
                     {/* Header with icon and year badge */}
                     <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-[48px] lg:h-[48px] bg-[#0A0A0A] rounded-xl flex items-center justify-center flex-shrink-0">
-                        <img 
-                          src={milestone.icon} 
+                        <img
+                          src={milestone.icon}
                           alt={`${milestone.title} icon`}
                           className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                         />

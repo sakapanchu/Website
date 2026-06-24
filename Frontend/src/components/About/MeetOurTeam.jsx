@@ -48,8 +48,8 @@ export default function MeetOurTeam() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: "easeOut",
         type: "spring",
         stiffness: 80,
@@ -160,7 +160,7 @@ export default function MeetOurTeam() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -185,8 +185,8 @@ export default function MeetOurTeam() {
               >
                 {/* Image */}
                 <div className="relative w-full aspect-[3/3] overflow-hidden">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -198,12 +198,12 @@ export default function MeetOurTeam() {
                   <h3 className="text-base sm:text-lg font-semibold text-[#000000] leading-7 mb-1">
                     {member.name}
                   </h3>
-                  
+
                   {/* Job Title */}
                   <p className="text-sm sm:text-base font-normal text-[#EBBC00] leading-5 mb-2">
                     {member.title}
                   </p>
-                  
+
                   {/* Description */}
                   <p className="text-xs sm:text-sm font-normal text-[#000000] leading-5">
                     {member.description}
@@ -215,9 +215,9 @@ export default function MeetOurTeam() {
                   {socialIcons.map((social) => {
                     const socialKey = social.id;
                     const socialUrl = member.social[socialKey];
-                    
+
                     if (!socialUrl) return null;
-                    
+
                     return (
                       <a
                         key={social.id}
@@ -227,8 +227,8 @@ export default function MeetOurTeam() {
                         className="w-7 h-7 sm:w-8 sm:h-8 border border-[#EBBA0A] rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#FFC80B] hover:border-[#FFC80B] hover:scale-110 bg-white"
                         aria-label={`Visit ${member.name}'s ${social.alt} profile`}
                       >
-                        <img 
-                          src={social.icon} 
+                        <img
+                          src={social.icon}
                           alt={social.alt}
                           className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain"
                         />

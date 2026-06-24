@@ -13,6 +13,7 @@ export default function Projects() {
   const navigate = useNavigate();
   const [hoveredProject, setHoveredProject] = useState(null);
   const sectionRef = useRef(null);
+  const mobileScrollRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   const controls = useAnimation();
 
@@ -23,6 +24,29 @@ export default function Projects() {
       controls.start("hidden");
     }
   }, [isInView, controls]);
+
+  // Set initial scroll position to the middle set of projects for mobile infinite scroll
+  useEffect(() => {
+    const container = mobileScrollRef.current;
+    if (container) {
+      const singleSetWidth = container.scrollWidth / 3;
+      container.scrollLeft = singleSetWidth;
+    }
+  }, []);
+
+  const handleMobileScroll = () => {
+    const container = mobileScrollRef.current;
+    if (!container) return;
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const singleSetWidth = scrollWidth / 3;
+
+    // Reset scroll position to middle block when reaching start or end boundaries
+    if (scrollLeft <= 5) {
+      container.scrollLeft = singleSetWidth + scrollLeft;
+    } else if (scrollLeft + clientWidth >= scrollWidth - 5) {
+      container.scrollLeft = scrollLeft - singleSetWidth;
+    }
+  };
 
   const projects = [
     {
@@ -186,8 +210,67 @@ export default function Projects() {
           animate={controls}
           className="space-y-6"
         >
-          {/* Row 1 - First 2 projects (1 wide, 1 normal) */}
-          <div className="flex gap-6">
+          {/* Mobile Horizontal Snap Scroll View (visible on mobile only) */}
+          <div
+            ref={mobileScrollRef}
+            onScroll={handleMobileScroll}
+            className="flex lg:hidden overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 w-full -mx-4 px-4"
+          >
+            {[...projects, ...projects, ...projects].map((project, index) => (
+              <motion.div
+                key={`${project.id}-${index}`}
+                variants={cardVariants}
+                className="relative shrink-0 w-[88vw] sm:w-[340px] snap-center cursor-pointer rounded-[32px] overflow-hidden shadow-md h-[400px]"
+                style={{ minHeight: "400px", maxHeight: "400px" }}
+                onClick={() => handleProjectClick(project.id)}
+              >
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${project.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(255, 200, 11, 0.15) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%)`,
+                    }}
+                  ></div>
+                </div>
+
+                {/* Category Badge */}
+                <div className="absolute top-5 left-6 z-10">
+                  <div
+                    className="inline-block px-4 border border-[#FFC80B] bg-[rgba(255,200,11,0.20)] text-white py-[3.5px] rounded-full text-[10px] font-bold tracking-[1px] uppercase"
+                    style={{
+                      boxShadow:
+                        "0 4px 16px 0 #FBBF24, 4px 4px 25px 0 rgba(251,191,36,0.30) inset",
+                    }}
+                  >
+                    {project.category}
+                  </div>
+                </div>
+
+                {/* Project details (visible by default on mobile) */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 pb-6">
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-[24px] sm:text-[30px] leading-[28px]">
+                      {project.title}
+                    </h4>
+                    <p className="text-white font-medium text-[12px] leading-4 opacity-90">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop Row 1 - First 2 projects (1 wide, 1 normal) - Hidden on Mobile */}
+          <div className="hidden lg:flex gap-6">
             {row1Projects.map((project) => {
               const isHovered = hoveredProject === project.id;
               const isRowHovered = row1Projects.some((p) => hoveredProject === p.id);
@@ -312,8 +395,8 @@ export default function Projects() {
             })}
           </div>
 
-          {/* Row 2 - Next 3 projects (all normal) - No hiding */}
-          <div className="flex gap-6">
+          {/* Desktop Row 2 - Next 3 projects (all normal) - Hidden on Mobile */}
+          <div className="hidden lg:flex gap-6">
             {row2Projects.map((project) => {
               const isHovered = hoveredProject === project.id;
               const isRowHovered = row2Projects.some((p) => hoveredProject === p.id);

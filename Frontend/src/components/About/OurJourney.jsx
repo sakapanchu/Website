@@ -40,8 +40,8 @@ export default function OurJourney() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: "easeOut",
         type: "spring",
         stiffness: 80,
@@ -117,7 +117,7 @@ export default function OurJourney() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -141,14 +141,14 @@ export default function OurJourney() {
                   variants={cardVariants}
                   className="relative rounded-2xl overflow-hidden shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] bg-white"
                 >
-                 
+
                   <div className="relative w-full aspect-[4/3] bg-gray-100 flex items-center justify-center">
-                    <img 
-                      src={item.image} 
+                    <img
+                      src={item.image}
                       alt={item.title}
                       className="w-full h-full object-contain"
                     />
-                    
+
                     {/* Bottom Overlay with Number and Title */}
                     <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm px-3 sm:px-4 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
                       {/* Number Badge */}
@@ -157,7 +157,7 @@ export default function OurJourney() {
                           {item.number}
                         </span>
                       </div>
-                      
+
                       {/* Title */}
                       <h3 className="text-sm sm:text-base font-bold text-[#0A0A0A] leading-5 sm:leading-6 truncate">
                         {item.title}

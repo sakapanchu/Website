@@ -74,7 +74,7 @@ export default function CareersHero() {
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
-      
+
 
         {/* Animated ring layers */}
         <div className="hero-orbit-layer" aria-hidden="true">
@@ -85,7 +85,7 @@ export default function CareersHero() {
 
         {/* Content wrapper */}
         <div className="relative z-10 flex flex-col min-h-[520px] md:min-h-[680px] lg:min-h-[779px]">
-          <div className="flex-1 px-8 sm:px-12 lg:px-16 pt-20 sm:pt-24 lg:pt-36 pb-6">
+          <div className="flex-1 px-3 sm:px-6 lg:px-16 pt-20 sm:pt-24 lg:pt-36 pb-6">
             <motion.div
               variants={contentVariants}
               initial="hidden"
@@ -139,7 +139,7 @@ export default function CareersHero() {
                       jobsSection.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="group flex items-center gap-2 px-8 py-3 rounded-full border border-[#FFC80B] bg-[#FFC80B]/20 text-white font-bold text-base leading-6 transition-all duration-300 hover:bg-[#FFC80B]/30 hover:scale-[1.02]"
+                  className="group flex items-center gap-2 px-3 sm:px-6 py-3 rounded-full border border-[#FFC80B] bg-[#FFC80B]/20 text-white font-bold text-base leading-6 transition-all duration-300 hover:bg-[#FFC80B]/30 hover:scale-[1.02]"
                 >
                   Explore career opportunities
                   <svg

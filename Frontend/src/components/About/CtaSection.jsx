@@ -63,7 +63,7 @@ export default function CtaSection() {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 bg-[#F1F1F1] px-8 overflow-hidden">
+    <section ref={sectionRef} className="py-8 bg-[#F1F1F1] px-3 sm:px-6 overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         <motion.div
           variants={containerVariants}
@@ -88,9 +88,9 @@ export default function CtaSection() {
                 variants={iconVariants}
                 className="w-[80px] h-[80px] bg-[#18181B] border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0"
               >
-                <img 
-                  src={DoubleMessageIcon} 
-                  alt="Double Message Icon" 
+                <img
+                  src={DoubleMessageIcon}
+                  alt="Double Message Icon"
                   className="w-10 h-10 object-contain"
                 />
               </motion.div>
@@ -98,7 +98,7 @@ export default function CtaSection() {
               {/* Text */}
               <div>
                 <h2 className="text-[36px] md:text-[42px] lg:text-[48px] font-bold text-white leading-[44px] md:leading-[48px]">
-                  Let's build something<br />impactful <span className="text-[#FBBF24]">together</span>     
+                  Let's build something<br />impactful <span className="text-[#FBBF24]">together</span>
                 </h2>
                 <p className="text-[16px] font-normal text-[#9CA3AF] leading-6 mt-2 max-w-[481px]">
                   Ready to bring your ideas to life? Our team is here to turn challenges into opportunities.
@@ -113,20 +113,20 @@ export default function CtaSection() {
             >
               <button
                 onClick={handleStartTalk}
-                className="inline-flex items-center gap-3 px-8 md:px-10 py-5 bg-[#FBBF24] text-black font-bold text-[18px] rounded-[30px] hover:bg-[#e6b40a] transition-colors duration-300 hover:shadow-lg hover:shadow-[#FBBF24]/30 group"
+                className="inline-flex items-center gap-3 px-3 sm:px-6 md:px-10 py-5 bg-[#FBBF24] text-black font-bold text-[18px] rounded-[30px] hover:bg-[#e6b40a] transition-colors duration-300 hover:shadow-lg hover:shadow-[#FBBF24]/30 group"
               >
                 Let's Talk
-                <svg 
-                  className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
+                <svg
+                  className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path 
-                    d="M5 12H19M19 12L13 6M19 12L13 18" 
-                    stroke="black" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="black"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                 </svg>

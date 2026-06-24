@@ -39,7 +39,7 @@ export default function FeaturedService() {
       buttonText: "Explore Digital Solutions",
       image: APICardImage,
     },
-     {
+    {
       id: 2,
       slug: "mobile-development",
       title: "Mobile Development",
@@ -52,7 +52,7 @@ export default function FeaturedService() {
       buttonText: "Explore Mobile Solutions",
       image: MobileCardImage,
     },
-     {
+    {
       id: 3,
       slug: "saas-application",
       title: "SaaS Application",
@@ -65,7 +65,7 @@ export default function FeaturedService() {
       buttonText: "Explore SaaS Solutions",
       image: MobileCardImage,
     },
-     {
+    {
       id: 4,
       slug: "web-development",
       title: "Web Development",
@@ -78,7 +78,7 @@ export default function FeaturedService() {
       buttonText: "Explore Web Solutions",
       image: WebCardImage,
     },
-     {
+    {
       id: 5,
       slug: "ui-ux-design",
       title: "Designs and Editing",
@@ -104,7 +104,7 @@ export default function FeaturedService() {
       buttonText: "Explore Marketing Solutions",
       image: CloudCardImage,
     },
-     {
+    {
       id: 7,
       slug: "cloud-solutions",
       title: "Cloud Solutions",
@@ -117,7 +117,7 @@ export default function FeaturedService() {
       buttonText: "Explore Cloud Solutions",
       image: CloudCardImage,
     },
-     {
+    {
       id: 8,
       slug: "financial-risk-analysis",
       title: "Financial Risk Analysis",
@@ -143,14 +143,14 @@ export default function FeaturedService() {
       buttonText: "Explore AI Solutions",
       image: AICardImage,
     },
-   
-    
-   
-   
-   
-   
-   
-    
+
+
+
+
+
+
+
+
   ];
 
   const handlePrev = () => {
@@ -254,11 +254,11 @@ export default function FeaturedService() {
               {/* Explore Button */}
               <button
                 onClick={() => handleServiceClick(currentService.slug)}
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#FBBF24] text-black font-bold text-[13px] sm:text-[14px] rounded-[30px] hover:bg-[#e6b40a] transition-colors"
+                className="inline-flex items-center gap-2 px-3 sm:px-6 py-3 sm:py-4 bg-[#FBBF24] text-black font-bold text-[13px] sm:text-[14px] rounded-[30px] hover:bg-[#e6b40a] transition-colors"
               >
                 {currentService.buttonText}
                 <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="black" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="black" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </motion.div>
@@ -303,11 +303,10 @@ export default function FeaturedService() {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      index === currentIndex
+                    className={`h-1.5 rounded-full transition-all duration-300 ${index === currentIndex
                         ? 'w-8 bg-[#FFC80B]'
                         : 'w-2 bg-white/40 hover:bg-white/60'
-                    }`}
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}

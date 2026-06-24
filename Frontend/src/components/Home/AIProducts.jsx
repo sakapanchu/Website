@@ -60,8 +60,8 @@ export default function AIProducts() {
   };
 
   const iconVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.5,
       rotate: -20,
     },
@@ -79,7 +79,7 @@ export default function AIProducts() {
 
   // Thunder/Lightning effect - plays once
   const thunderVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 0.8,
     },
@@ -97,7 +97,7 @@ export default function AIProducts() {
 
   // Glow flash effect
   const glowVariants = {
-    hidden: { 
+    hidden: {
       boxShadow: "0 0 0 0 rgba(255, 200, 11, 0)",
     },
     visible: {
@@ -148,7 +148,7 @@ export default function AIProducts() {
           initial="hidden"
           animate={controls}
           className="relative bg-cover bg-center rounded-[48px] overflow-hidden min-h-[458px]"
-          style={{ 
+          style={{
             backgroundImage: `url(${ChatbotImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
@@ -174,7 +174,7 @@ export default function AIProducts() {
                 className="absolute inset-0 rounded-full bg-[#FFC80B]/20"
                 style={{ filter: 'blur(20px)' }}
               />
-              
+
               {/* Glow effect */}
               <motion.div
                 variants={glowVariants}
@@ -182,9 +182,9 @@ export default function AIProducts() {
                 animate={controls}
                 className="rounded-full"
               >
-                <img 
-                  src={ChatIcon} 
-                  alt="Chat Icon" 
+                <img
+                  src={ChatIcon}
+                  alt="Chat Icon"
                   className="w-40 h-48 object-contain relative z-10"
                 />
               </motion.div>
@@ -217,20 +217,20 @@ export default function AIProducts() {
               {/* Explore Solutions Button */}
               <button
                 onClick={handleExploreSolutions}
-                className="inline-flex items-center gap-2 px-8 md:px-10 py-4 bg-[#FFC80B] text-black font-bold text-[16px] rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FFC80B]/30 group"
+                className="inline-flex items-center gap-2 px-3 sm:px-6 md:px-10 py-4 bg-[#FFC80B] text-black font-bold text-[16px] rounded-full hover:bg-[#e6b40a] transition-all duration-300 hover:shadow-lg hover:shadow-[#FFC80B]/30 group"
               >
                 Explore Solutions
-                <svg 
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path 
-                    d="M5 12H19M19 12L13 6M19 12L13 18" 
-                    stroke="black" 
-                    strokeWidth="2.5" 
-                    strokeLinecap="round" 
+                  <path
+                    d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="black"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                 </svg>

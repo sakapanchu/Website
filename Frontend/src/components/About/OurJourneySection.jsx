@@ -42,8 +42,8 @@ export default function OurJourneySection() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: "easeOut",
         type: "spring",
         stiffness: 80,
@@ -77,7 +77,7 @@ export default function OurJourneySection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-10 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-10 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -102,25 +102,25 @@ export default function OurJourneySection() {
               >
                 {/* Image */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  
+
                   {/* Gradient Overlay - with hover effect */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-all duration-500 group-hover:from-black/95 group-hover:via-black/60"></div>
-                  
+
                   {/* Yellow Overlay on Hover */}
                   <div className="absolute inset-0 bg-[#FFC80B]/0 transition-all duration-500 group-hover:bg-[#FFC80B]/10"></div>
-                  
+
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 transition-transform duration-300 group-hover:translate-y-[-4px]">
                     {/* Title with Icon */}
                     <div className="flex items-center gap-3 mb-2">
                       <div className="p-2 bg-[#FBBF24]/20 rounded-full flex-shrink-0 transition-all duration-300 group-hover:bg-[#FBBF24]/40 group-hover:scale-110">
-                        <img 
-                          src={item.icon} 
+                        <img
+                          src={item.icon}
                           alt={`${item.title} icon`}
                           className="w-6 h-6 object-contain transition-transform duration-300 group-hover:rotate-12"
                         />
@@ -129,7 +129,7 @@ export default function OurJourneySection() {
                         {item.title}
                       </h3>
                     </div>
-                    
+
                     {/* Description */}
                     <p className="text-xs sm:text-sm lg:text-[14px] font-normal text-white/90 leading-4 sm:leading-5 lg:leading-4 max-w-[378px] transition-all duration-300 group-hover:text-white">
                       {item.description}

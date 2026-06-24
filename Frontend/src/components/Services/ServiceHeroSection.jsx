@@ -198,7 +198,7 @@ export default function ServiceHeroSection() {
 
         {/* Content wrapper */}
         <div className="relative z-10 flex flex-col min-h-[520px] md:min-h-[680px] lg:min-h-[779px]">
-          <div className="flex-1 px-8 sm:px-12 lg:px-16 pt-16 sm:pt-20 lg:pt-32 pb-6">
+          <div className="flex-1 px-3 sm:px-6 sm:px-12 lg:px-16 pt-16 sm:pt-20 lg:pt-32 pb-6">
             <motion.div
               variants={contentVariants}
               className="max-w-xl lg:max-w-[700px]"
@@ -221,7 +221,7 @@ export default function ServiceHeroSection() {
 
               <button
                 onClick={() => navigate("/contact")}
-                className="flex items-center gap-2 px-8 py-3 max-w-[272.5px] max-h-[50px] rounded-full border border-[#FFC80B] bg-[#FFC80B]/20 text-white font-bold text-base leading-6 transition-colors hover:bg-[#FFC80B]/30 mt-6"
+                className="flex items-center gap-2 px-3 sm:px-6 py-3 max-w-[272.5px] max-h-[50px] rounded-full border border-[#FFC80B] bg-[#FFC80B]/20 text-white font-bold text-base leading-6 transition-colors hover:bg-[#FFC80B]/30 mt-6"
               >
                 Get Consultation →
               </button>

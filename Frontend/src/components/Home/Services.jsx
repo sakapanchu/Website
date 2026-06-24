@@ -151,7 +151,7 @@ export default function Services() {
   }
 
   return (
-    <section ref={sectionRef} className="py-8 px-8 bg-[#F1F1F1] overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-3 sm:px-6 bg-[#F1F1F1] overflow-hidden">
       <div className="max-w-[1430px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -200,8 +200,8 @@ export default function Services() {
                   <div className="flex items-start justify-between mb-6">
                     {/* Icon Box */}
                     <div className="w-12 h-12 bg-[#222222] rounded-xl flex items-center justify-center">
-                      <img 
-                        src={service.icon} 
+                      <img
+                        src={service.icon}
                         alt={service.alt}
                         className="w-6 h-6 object-contain"
                       />
